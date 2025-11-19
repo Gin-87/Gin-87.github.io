@@ -37,5 +37,4 @@ I plan to continue expanding this site with:
 ## 📬 Contact
 Feel free to reach out!
 - **Email:** wszhao87@gmail.com  
-- **LinkedIn:** (add link)  
-
+- **LinkedIn:** https://www.linkedin.com/in/wenshu-zhao
