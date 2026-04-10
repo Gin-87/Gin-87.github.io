@@ -205,6 +205,18 @@
       <h2>Experience</h2>
       <div class="card timeline">
         <div class="t-item">
+          <strong>Voraa · Full-Stack Engineer</strong> <span class="muted"> (Dec 2025 – Present)</span>
+          <div class="muted">Backend & Full-stack · Java, React, Redis, PostgreSQL, NLP</div>
+          <!-- <ul>
+            <li>Engineered modular backend services using Java, JavaScript, and MySQL, with a custom ORM layer for persistence and implemented RESTful APIs to enable reliable JSON-based data exchange.</li>
+            <li>Built responsive user/admin interfaces with React.js and TailwindCSS, including dynamic multi-step forms and state management, and integrated Chart.js for interactive data visualization.</li>
+            <li>Implemented secure authentication system with email validation, server-side login, token-based session management, and 2FA support.</li>
+            <li>Designed and launched a 6-step dynamic application workflow supporting applicant details, project data, multi-file uploads (PDF, PNG, JPG, DOC), and multi-currency payment integration (USD & Zimbabwean Dollar).</li>
+            <li>Delivered usability features including draft-saving & progress tracking, and integrated Email/SMS notifications for automated status updates.</li>
+          </ul> -->
+        </div>
+
+        <div class="t-item">
           <strong>IpserLab · Full-Stack Intern</strong> <span class="muted"> (Jun 2025 – Present)</span>
           <div class="muted">Backend & Full-stack · Java, React, MySQL, TailwindCSS</div>
           <ul>
@@ -239,6 +251,22 @@
     <section id="projects" style="margin-top:24px">
       <h2>SDE Projects</h2>
       <div class="grid projects">
+        <article class="card">
+          <h3>Seattle Source Ranker</h3>
+          <p class="muted">Python · Celery/Redis · GraphQL/REST · Distributed Systems · React · GitHub Actions</p>
+          <ul>
+            <li>Built a scalable distributed ingestion pipeline with Celery + Redis (16 concurrent workers) to collect and validate 432K+ repositories from 28K Seattle developers, achieving an 8.1× throughput improvement and 99.98% reliable ingestion under strict API rate limits.</li>
+            <li>Designed a three-phase hybrid API workflow (GraphQL → REST → GraphQL+HEAD) to correct GitHub’s inconsistent watchers data and remove ~2% invalid repos (deleted/private), ensuring high-precision metadata for all ranked projects.</li>
+            <li>Implemented a fault-tolerant token rotation system (6 rotating tokens × 5000 req/hr) with intelligent backoff and idempotent retries, reducing rate-limit failures by 92% and enabling 60–90 minute full dataset rebuilds.</li>
+            <li>Developed a multi-factor ranking engine using log-scaled popularity metrics (stars/forks/watchers), project age, issue health, and maintenance activity; supports 10 major languages and Python-specific PyPI tier bonuses (+15.5%).</li>
+            <li>Integrated PyPI’s 700K+ package index and global Top-15K rankings, identifying 1,075 Seattle PyPI packages and boosting visibility for 28 globally significant projects, using offline matching with 100% precision.</li>
+            <li>Automated daily dataset updates and static deployment via GitHub Actions, generating 9,632 optimized JSON datasets consumed by a React interface with real-time search, suggestions, lazy pagination, and <50ms load times.</li>
+          </ul>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            <span class="chip">Sep 2025 – Present</span>
+          </div>
+        </article>
+
         <article class="card">
           <h3>Virtual Character Letter Platform</h3>
           <p class="muted">Java · Spring Boot · Redis · MongoDB · MySQL · RabbitMQ · AWS (EC2, CloudWatch) · Docker · Nginx</p>
