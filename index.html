@@ -5,387 +5,765 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Wenshu Zhao – Software Development Engineer</title>
   <meta name="description" content="Turning ideas into reliable software products—from microservices and secure workflows to real-time user experiences—currently pursuing an M.S. at UW and open to SDE roles.">
-
-  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Wenshu Zhao – SDE Portfolio">
-  <meta property="og:description" content="UW graduate student specializing in backend & full-stack development with Java, Spring Boot, React, Redis, Docker, and AWS. Open to SDE roles.">
+  <meta property="og:description" content="UW graduate student specializing in backend & full-stack development. Open to SDE roles.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gin-87.github.io/">
   <meta property="og:image" content="photo.jpg">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- PWA -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0ea5e9">
-
   <link rel="icon" href="favicon.ico">
 
   <style>
-    :root{
-      --bg:#0b0f14; --bg-soft:#0f1620; --card:#111927; --text:#e5e7eb; --muted:#9ca3af; --brand:#0ea5e9;
-      --link:#38bdf8; --ring:rgba(14,165,233,.35);
-      --light-bg:#ffffff; --light-soft:#f8fafc; --light-card:#ffffff; --light-text:#111827; --light-muted:#6b7280; --light-link:#0ea5e9;
-      --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.25);
-      --mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-      --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",system-ui,sans-serif;
-    }
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:var(--sans); line-height:1.65; background:var(--bg); color:var(--text);
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-    }
-    .light body{ background: var(--light-bg); color: var(--light-text); }
-    a{ color:var(--link); text-decoration:none }
-    .light a{ color:var(--light-link) }
-    .container{ max-width:1080px; margin:0 auto; padding:0 20px }
-    header{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(11,15,20,.6) }
-    .light header{ background:rgba(255,255,255,.7) }
-    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
-    .nav a{ margin:0 10px; font-weight:600 }
-    .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; background:var(--brand);
-      color:#fff; font-weight:700; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.06)
-    }
-    .btn span {color: #fff;}
-    .btn.secondary{ background:transparent; color:inherit; border:1px solid rgba(255,255,255,.15) }
-    .light .btn.secondary{ border-color:#e5e7eb }
-    .chip{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid rgba(255,255,255,.15); border-radius:999px; font-size:12px; color:var(--muted)}
-    .light .chip{ border-color:#e5e7eb; color:var(--light-muted) }
+    /* ── Design Tokens ─────────────────────────────── */
+    :root {
+      --bg:       #080c12;
+      --bg-soft:  #0d1320;
+      --card:     #101724;
+      --card-hover: #131d2b;
+      --border:   rgba(255,255,255,.08);
+      --border-brand: rgba(14,165,233,.4);
+      --text:     #e2e8f0;
+      --muted:    #94a3b8;
+      --subtle:   #475569;
+      --brand:    #0ea5e9;
+      --brand-dim: rgba(14,165,233,.12);
+      --brand-glow: rgba(14,165,233,.25);
+      --link:     #38bdf8;
+      --ring:     rgba(14,165,233,.3);
+      --green:    #22c55e;
 
-    .hero{ padding:80px 0 40px; display:grid; grid-template-columns:1.3fr .7fr; gap:40px; align-items:center }
-    .hero-card{ background:linear-gradient(180deg,rgba(14,165,233,.15),transparent); padding:32px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.08) }
-    .light .hero-card{ background:linear-gradient(180deg,rgba(14,165,233,.08),#fff) }
-    .avatar{ width:120px; height:120px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,.15) }
-    h1{ font-size:42px; line-height:1.2; margin:10px 0 12px }
-    h2{ font-size:28px; margin:26px 0 12px }
-    p.lead{ font-size:18px; color:#cbd5e1 }
-    .light p.lead{ color:#475569 }
-    .grid{ display:grid; gap:16px }
-    .grid.projects{ grid-template-columns: repeat(2,minmax(0,1fr)) }
-    .grid.skills{ grid-template-columns: repeat(4,minmax(0,1fr)) }
-    .card{ background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow) }
-    .light .card{ background:var(--light-card); border-color:#eef2f7 }
-    .card h3{ margin:0 0 6px; font-size:18px }
-    .muted{ color:var(--muted) }
-    .light .muted{ color:var(--light-muted) }
-    .timeline{ position:relative; padding-left:26px }
-    .timeline::before{ content:""; position:absolute; left:8px; top:6px; bottom:6px; width:2px; background:rgba(255,255,255,.15) }
-    .light .timeline::before{ background:#e5e7eb }
-    .t-item{ position:relative; margin:16px 0; padding-left:8px }
-    .t-item::before{ content:""; position:absolute; left:-18px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px var(--ring) }
-    .project-links{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; align-items:center }
-    .gh-link{ display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:8px; font-size:13px; font-weight:600; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15); color:var(--text); transition:background .15s }
-    .gh-link:hover{ background:rgba(255,255,255,.13); color:var(--text) }
-    .light .gh-link{ background:#f1f5f9; border-color:#e2e8f0; color:var(--light-text) }
-    .light .gh-link:hover{ background:#e2e8f0; color:var(--light-text) }
-    footer{ margin:50px 0 30px; text-align:center; font-size:14px; color:var(--muted) }
+      --lb:#ffffff; --lb-soft:#f8fafc; --lb-card:#ffffff;
+      --lb-text:#0f172a; --lb-muted:#64748b; --lb-subtle:#94a3b8;
+      --lb-border:#e2e8f0; --lb-card-hover:#f8fafc;
 
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-      .grid.projects{ grid-template-columns: 1fr 1fr }
-      .grid.skills{ grid-template-columns: repeat(2,minmax(0,1fr)) }
-      h1{ font-size:34px }
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 24px rgba(0,0,0,.35);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.45);
+      --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      --mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
     }
-    @media (max-width: 560px){
-      .grid.projects{ grid-template-columns: 1fr }
-      .grid.skills{ grid-template-columns: repeat(2,minmax(0,1fr)) }
+
+    /* ── Reset & Base ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); line-height: 1.7;
+      background: var(--bg); color: var(--text);
+      -webkit-font-smoothing: antialiased;
     }
-    :focus-visible{ outline: 2px solid var(--brand); outline-offset: 2px; }
-    .sr-only{ position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0 }
+    .light body { background: var(--lb); color: var(--lb-text); }
+    a { color: var(--link); text-decoration: none; }
+    .light a { color: var(--brand); }
+    ul { padding-left: 20px; margin: 8px 0 0; }
+    li { margin: 5px 0; }
+    code { font-family: var(--mono); font-size: .85em; background: rgba(255,255,255,.07); padding: 1px 5px; border-radius: 4px; }
+    .light code { background: #f1f5f9; }
+
+    /* ── Layout ────────────────────────────────────── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Header ────────────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,12,18,.75);
+      backdrop-filter: saturate(180%) blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .light header {
+      background: rgba(255,255,255,.8);
+      border-bottom-color: var(--lb-border);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; gap: 16px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      flex-shrink: 0; text-decoration: none;
+    }
+    .brand-avatar {
+      width: 30px; height: 30px; border-radius: 50%; object-fit: cover;
+      border: 1.5px solid rgba(255,255,255,.2);
+    }
+    .brand-name { font-weight: 700; font-size: 15px; color: var(--text); }
+    .light .brand-name { color: var(--lb-text); }
+    .badge-work {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 600;
+      background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); color: var(--green);
+    }
+
+    /* ── Tab Navigation ────────────────────────────── */
+    .tab-nav {
+      display: flex; align-items: center; gap: 2px;
+      overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 6px 13px; border-radius: var(--radius-sm);
+      font-size: 13.5px; font-weight: 600; white-space: nowrap;
+      color: var(--muted); background: none; border: none; cursor: pointer;
+      transition: color .15s, background .15s;
+    }
+    .tab-btn:hover { color: var(--text); background: rgba(255,255,255,.06); }
+    .tab-btn.active { color: var(--brand); background: var(--brand-dim); }
+    .light .tab-btn:hover { color: var(--lb-text); background: #f1f5f9; }
+    .light .tab-btn.active { color: var(--brand); background: rgba(14,165,233,.1); }
+    .theme-btn {
+      flex-shrink: 0; padding: 6px 11px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 600;
+      color: var(--muted); background: rgba(255,255,255,.05);
+      border: 1px solid var(--border); cursor: pointer; transition: background .15s;
+    }
+    .theme-btn:hover { background: rgba(255,255,255,.1); }
+    .light .theme-btn { background: #f1f5f9; border-color: var(--lb-border); color: var(--lb-muted); }
+
+    /* ── Tab Content Panels ────────────────────────── */
+    .tab-panel { display: none; padding: 36px 0 60px; }
+    .tab-panel.active { display: block; animation: fadeUp .22s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Section Headings ──────────────────────────── */
+    .section-title {
+      font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--brand); margin: 0 0 20px; display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after {
+      content: ""; flex: 1; height: 1px; background: var(--border);
+    }
+    .light .section-title::after { background: var(--lb-border); }
+
+    /* ── Cards ─────────────────────────────────────── */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .light .card { background: var(--lb-card); border-color: var(--lb-border); }
+    article.card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-brand);
+      border-color: var(--border-brand);
+      background: var(--card-hover);
+    }
+    .light article.card:hover { background: var(--lb-card-hover); }
+    .card-title { margin: 0 0 4px; font-size: 17px; font-weight: 700; line-height: 1.35; }
+    .card-sub { font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+    .light .card-sub { color: var(--lb-muted); }
+
+    /* ── Grid ───────────────────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .grid-4 { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 580px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: repeat(2,1fr); }
+    }
+
+    /* ── Skill Pills ───────────────────────────────── */
+    .pill-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .pill {
+      display: inline-flex; align-items: center;
+      padding: 4px 11px; border-radius: 6px; font-size: 12.5px; font-weight: 500;
+      background: rgba(14,165,233,.1); border: 1px solid rgba(14,165,233,.2); color: #7dd3fc;
+      transition: background .15s, border-color .15s;
+    }
+    .pill:hover { background: rgba(14,165,233,.18); border-color: rgba(14,165,233,.4); }
+    .light .pill { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+    .skill-card-label {
+      font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 2px;
+    }
+    .light .skill-card-label { color: var(--lb-muted); }
+
+    /* ── Timeline ──────────────────────────────────── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .t-item {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 0 20px; position: relative;
+    }
+    .t-track {
+      display: flex; flex-direction: column; align-items: center; width: 18px;
+    }
+    .t-dot {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+      background: var(--brand); box-shadow: 0 0 0 3px var(--ring);
+      margin-top: 5px;
+    }
+    .t-line {
+      width: 2px; flex: 1; background: var(--border); margin: 6px 0;
+    }
+    .t-item:last-child .t-line { display: none; }
+    .light .t-line { background: var(--lb-border); }
+    .t-body { padding: 0 0 28px; }
+    .t-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .t-title { font-size: 15.5px; font-weight: 700; margin: 0; line-height: 1.3; }
+    .t-role { font-size: 13px; color: var(--brand); font-weight: 600; margin: 2px 0 0; }
+    .t-date {
+      display: inline-flex; align-items: center; padding: 3px 10px;
+      border-radius: 999px; font-size: 12px; font-weight: 600; flex-shrink: 0;
+      background: rgba(255,255,255,.06); border: 1px solid var(--border); color: var(--muted);
+    }
+    .light .t-date { background: #f8fafc; border-color: var(--lb-border); color: var(--lb-muted); }
+    .t-stack { font-size: 12.5px; color: var(--subtle); margin: 5px 0 8px; }
+    .light .t-stack { color: var(--lb-subtle); }
+
+    /* ── Project GitHub link ───────────────────────── */
+    .project-footer { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .gh-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 13px; border-radius: var(--radius-sm);
+      font-size: 12.5px; font-weight: 600;
+      background: rgba(255,255,255,.06); border: 1px solid var(--border);
+      color: var(--text); transition: background .15s, border-color .15s;
+    }
+    .gh-btn:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.25); color: var(--text); }
+    .light .gh-btn { background: #f1f5f9; border-color: var(--lb-border); color: var(--lb-text); }
+    .light .gh-btn:hover { background: #e2e8f0; color: var(--lb-text); }
+    .chip {
+      display: inline-flex; align-items: center; padding: 4px 10px;
+      border-radius: 999px; font-size: 12px; color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .light .chip { border-color: var(--lb-border); color: var(--lb-muted); }
+
+    /* ── Hero / About ──────────────────────────────── */
+    .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 24px; align-items: start; }
+    @media (max-width: 780px) { .hero-grid { grid-template-columns: 1fr; } }
+    .hero-card {
+      background: linear-gradient(160deg, rgba(14,165,233,.13) 0%, transparent 60%);
+      border: 1px solid rgba(14,165,233,.18);
+      border-radius: var(--radius); padding: 30px;
+    }
+    .light .hero-card {
+      background: linear-gradient(160deg, rgba(14,165,233,.07) 0%, #fff 60%);
+      border-color: rgba(14,165,233,.2);
+    }
+    .hero-name {
+      font-size: 40px; font-weight: 800; line-height: 1.15; margin: 10px 0 10px;
+      background: linear-gradient(135deg, #e2e8f0 30%, var(--brand));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .light .hero-name {
+      background: linear-gradient(135deg, #0f172a 30%, var(--brand));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(14,165,233,.35); }
+    .hero-lead { font-size: 16px; color: var(--muted); line-height: 1.75; margin: 0 0 18px; }
+    .light .hero-lead { color: var(--lb-muted); }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 13px; border-radius: 999px; font-size: 13px;
+      background: rgba(255,255,255,.05); border: 1px solid var(--border);
+      color: var(--muted); transition: background .15s;
+    }
+    .hero-chip:hover { background: rgba(255,255,255,.1); color: var(--text); }
+    .light .hero-chip { background: #f8fafc; border-color: var(--lb-border); color: var(--lb-muted); }
+    .light .hero-chip:hover { background: #f1f5f9; color: var(--lb-text); }
+    .highlights-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+    .light .highlights-card { background: var(--lb-card); border-color: var(--lb-border); }
+    .highlights-card h3 { margin: 0 0 14px; font-size: 15px; font-weight: 700; color: var(--text); }
+    .light .highlights-card h3 { color: var(--lb-text); }
+    .highlights-card li { font-size: 13.5px; color: var(--muted); margin: 8px 0; line-height: 1.55; }
+    .light .highlights-card li { color: var(--lb-muted); }
+
+    /* ── Buttons ───────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: var(--radius-sm);
+      background: var(--brand); color: #fff; font-weight: 700; font-size: 14px;
+      box-shadow: 0 4px 14px rgba(14,165,233,.35);
+      transition: opacity .15s, box-shadow .15s;
+    }
+    .btn-primary:hover { opacity: .9; box-shadow: 0 6px 20px rgba(14,165,233,.45); color: #fff; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.06); color: var(--text); font-weight: 600; font-size: 14px;
+      border: 1px solid var(--border); transition: background .15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.12); color: var(--text); }
+    .light .btn-secondary { background: #f1f5f9; border-color: var(--lb-border); color: var(--lb-text); }
+    .light .btn-secondary:hover { background: #e2e8f0; color: var(--lb-text); }
+
+    /* ── Contact ───────────────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); text-decoration: none; color: var(--text);
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .contact-item:hover {
+      border-color: var(--border-brand); background: var(--card-hover);
+      transform: translateY(-3px); color: var(--text);
+    }
+    .light .contact-item { background: var(--lb-card); border-color: var(--lb-border); color: var(--lb-text); }
+    .light .contact-item:hover { background: var(--lb-card-hover); color: var(--lb-text); }
+    .contact-icon { font-size: 22px; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: var(--brand-dim); flex-shrink: 0; }
+    .contact-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .light .contact-label { color: var(--lb-muted); }
+    .contact-value { font-size: 14px; font-weight: 600; margin-top: 2px; }
+
+    /* ── Footer ────────────────────────────────────── */
+    footer { text-align: center; padding: 24px; font-size: 13px; color: var(--subtle); border-top: 1px solid var(--border); }
+    .light footer { border-top-color: var(--lb-border); color: var(--lb-subtle); }
+
+    /* ── Utility ────────────────────────────────────── */
+    .muted { color: var(--muted); }
+    .light .muted { color: var(--lb-muted); }
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+    .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0 }
   </style>
 
-  <!-- Structured data -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Wenshu Zhao",
-    "url":"https://gin-87.github.io/",
-    "image":"photo.jpg",
+    "@context":"https://schema.org","@type":"Person",
+    "name":"Wenshu Zhao","url":"https://gin-87.github.io/","image":"photo.jpg",
     "jobTitle":"Software Development Engineer",
-    "email":"wszhao87@gmail.com",
-    "telephone":"+1-626-997-6248",
+    "email":"wszhao87@gmail.com","telephone":"+1-626-997-6248",
     "sameAs":["https://www.linkedin.com/in/wenshu-zhao","https://github.com/Gin-87"]
   }
   </script>
 
   <script>
-    // Theme boot: localStorage > system
     (function(){
       const ls = localStorage.getItem('theme');
-      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      if(ls === 'light' || (!ls && prefersLight)){ document.documentElement.classList.add('light'); }
+      const light = window.matchMedia('(prefers-color-scheme: light)').matches;
+      if(ls === 'light' || (!ls && light)) document.documentElement.classList.add('light');
       document.documentElement.classList.remove('no-js');
     })();
   </script>
 </head>
 <body>
+
+  <!-- ── Header ─────────────────────────────────────── -->
   <header>
-    <nav class="container nav" aria-label="Main">
-      <div style="display:flex;align-items:center;gap:12px">
-        <img src="hellokitty.jpg" alt="Avatar" width="32" height="32" style="border-radius:50%;border:1px solid rgba(255,255,255,.25)">
-        <strong>Wenshu Zhao</strong>
-        <span class="chip" title="Availability">🎯 Open to Work</span>
-      </div>
-      <div>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">SDE Projects</a>
-        <a href="#ml-projects">ML Projects</a>
-        <a href="#contact">Contact</a>
-        <button id="themeToggle" class="btn secondary" aria-label="Toggle theme">🌓 Theme</button>
-      </div>
-    </nav>
+    <div class="container header-inner">
+      <a class="brand" href="#about" data-tab="about">
+        <img class="brand-avatar" src="hellokitty.jpg" alt="">
+        <span class="brand-name">Wenshu Zhao</span>
+        <span class="badge-work">● Open to Work</span>
+      </a>
+      <nav class="tab-nav" aria-label="Main navigation">
+        <button class="tab-btn" data-tab="about">About</button>
+        <button class="tab-btn" data-tab="skills">Skills</button>
+        <button class="tab-btn" data-tab="education">Education</button>
+        <button class="tab-btn" data-tab="experience">Experience</button>
+        <button class="tab-btn" data-tab="projects">SDE Projects</button>
+        <button class="tab-btn" data-tab="ml">ML Projects</button>
+        <button class="tab-btn" data-tab="contact">Contact</button>
+      </nav>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌓</button>
+    </div>
   </header>
 
+  <!-- ── Main ───────────────────────────────────────── -->
   <main class="container">
-    <!-- Hero -->
-    <section class="hero" id="about">
-      <div class="hero-card">
-        <div style="display:flex;gap:18px;align-items:center">
-          <img class="avatar" src="photo.jpg" alt="Wenshu Zhao headshot">
-          <div>
-            <h1>Hi, I'm <span style="color:var(--brand)">Wenshu Zhao</span></h1>
-            <p class="lead">Turning ideas into reliable software products—from microservices and secure workflows to real-time, <strong>AI-driven</strong> user experiences—currently pursuing an M.S. at University of Washington with hands-on experience in <strong>Machine Learning</strong> and open to <strong>SDE</strong> roles.</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-              <a class="btn" href="CV_SDE_Wenshu_Zhao.pdf" target="_blank" rel="noopener">📄 <span>Download Resume (PDF)</span></a>
-              <a class="btn secondary" href="#projects">See my work ↓</a>
+
+    <!-- About ──────────────────────────────────────── -->
+    <section class="tab-panel" id="panel-about">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div style="display:flex;align-items:center;gap:16px">
+            <img class="hero-avatar" src="photo.jpg" alt="Wenshu Zhao">
+            <div>
+              <p style="margin:0;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase">Software Engineer</p>
+              <h1 class="hero-name">Wenshu Zhao</h1>
             </div>
           </div>
+          <p class="hero-lead" style="margin-top:16px">
+            Turning ideas into reliable software products — from distributed systems and microservices to real-time,
+            <strong>AI-driven</strong> user experiences. Currently pursuing an M.S. at the University of Washington
+            with hands-on experience in <strong>Machine Learning</strong>, open to <strong>SDE</strong> roles.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn-primary" href="CV_SDE_Wenshu_Zhao.pdf" target="_blank" rel="noopener">📄 Download Resume</a>
+            <button class="btn-secondary" data-tab="projects">See my work →</button>
+          </div>
+          <div class="hero-chips">
+            <span class="hero-chip">📍 Seattle, WA</span>
+            <a class="hero-chip" href="mailto:wszhao87@gmail.com">✉️ wszhao87@gmail.com</a>
+            <a class="hero-chip" href="https://www.linkedin.com/in/wenshu-zhao" rel="me">🔗 LinkedIn</a>
+            <a class="hero-chip" href="https://github.com/Gin-87" rel="me">🐙 GitHub</a>
+            <a class="hero-chip" href="tel:+16269976248">📞 +1 626-997-6248</a>
+          </div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
-          <span class="chip">📍 Seattle, WA</span>
-          <a class="chip" href="mailto:wszhao87@gmail.com">✉️ wszhao87@gmail.com</a>
-          <a class="chip" href="https://www.linkedin.com/in/wenshu-zhao" rel="me">🔗 LinkedIn</a>
-          <a class="chip" href="https://github.com/Gin-87" rel="me">🐙 GitHub</a>
-          <a class="chip" href="tel:+16269976248">📞 +1 626-997-6248</a>
-        </div>
-      </div>
 
-      <!-- Highlights -->
-      <aside class="card" aria-label="Highlights">
-        <h2 style="margin-top:0">Recent Highlights</h2>
-        <ul>
-          <li>Built Deal-Breaker Mode for Voraa using Flutter & Firebase Cloud Functions with real-time multi-constraint venue matching.</li>
-          <li>Architected a schema-driven form engine in React Native & TypeScript for IpserLab with offline-first state management.</li>
-          <li>Delivered a distributed ingestion pipeline (8.1× throughput, 99.98% reliability) for Seattle Source Ranker.</li>
-          <li>Designed a two-layer async system (FastAPI + RabbitMQ) for LLM-powered letter generation on Echoes platform.</li>
-        </ul>
-      </aside>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" style="margin-top:24px">
-      <h2>Skills</h2>
-      <div class="grid skills">
-        <div class="card"><strong>Languages</strong><div class="muted">Java · Python · JavaScript · TypeScript · SQL · C++ · HTML/CSS</div></div>
-        <div class="card"><strong>Frameworks & Tools</strong><div class="muted">Spring Boot · React · FastAPI · Expo · Xcode · Hadoop · Apache Spark · Git</div></div>
-        <div class="card"><strong>Databases & Cloud</strong><div class="muted">PostgreSQL · MySQL · MongoDB · SQL Server · Redis · AWS · Azure · Docker · Linux · CI/CD · Nginx</div></div>
-        <div class="card"><strong>Concepts</strong><div class="muted">Distributed Systems · Microservices · System Design · Data Structures · SDLC</div></div>
-        <div class="card"><strong>AI Tools</strong><div class="muted">Claude · GitHub Copilot · Cursor · ChatGPT · Prompt Engineering · Agent Workflow Design</div></div>
-        <div class="card"><strong>Deep Learning</strong><div class="muted">CNN · LSTM · Bi-LSTM · Multi-Input Architectures · Computer Vision · PyTorch · Keras</div></div>
-        <div class="card"><strong>Generative Models</strong><div class="muted">Stable Diffusion · DreamBooth · LoRA · Prompt Engineering · Output Filtering · Grad-CAM · Fairness Analysis</div></div>
-        <div class="card"><strong>ML & Statistics</strong><div class="muted">Scikit-learn · Feature Engineering · A/B Testing · Supervised & Unsupervised Learning · Regression Analysis</div></div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" style="margin-top:24px">
-      <h2>Education</h2>
-      <div class="card timeline">
-        <div class="t-item">
-          <strong>University of Washington, Seattle — M.S. in Information Science</strong>
-          <div class="muted">Specialization: Data Science & Artificial Intelligence &nbsp;·&nbsp; GPA: 3.9/4.0 &nbsp;·&nbsp; Sep 2024 – Jun 2026 (Expected)</div>
-        </div>
-        <div class="t-item">
-          <strong>China Pharmaceutical University, Nanjing — B.S. in Information Management & Information Systems</strong>
-          <div class="muted">GPA: 3.7/4.0 &nbsp;·&nbsp; Sep 2020 – Jun 2024</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" style="margin-top:24px">
-      <h2>Experience</h2>
-      <div class="card timeline">
-        <div class="t-item">
-          <strong>Voraa · Software Engineer – Capstone</strong> <span class="muted">(Sep 2025 – Present)</span>
-          <div class="muted">Flutter · Firebase Cloud Functions · Node.js · Firestore</div>
+        <div class="highlights-card">
+          <h3>Recent Highlights</h3>
           <ul>
-            <li>Designed and implemented Deal-Breaker Mode across Flutter and Firebase Cloud Functions using Node.js, executing a multi-constraint filtering pipeline against a dynamic GenTag taxonomy for real-time venue matching.</li>
-            <li>Solved Firestore's single <code>array-contains</code> limitation by implementing in-memory multi-tag AND/OR filtering with pagination and fallback relax suggestions on empty results.</li>
-          </ul>
-        </div>
-
-        <div class="t-item">
-          <strong>IpserLab · Software Engineer Intern</strong> <span class="muted">(Jun 2025 – Dec 2025)</span>
-          <div class="muted">React Native · TypeScript · Jakarta EE · Java 21 · JDBC · PostgreSQL</div>
-          <ul>
-            <li>Architected a schema-driven form engine in React Native & TypeScript supporting 6-step workflows with 28+ dynamic fields, decoupling UI from business logic via reusable components and custom hooks.</li>
-            <li>Engineered an offline-first application lifecycle system managing draft-to-completion submission state via AsyncStorage with per-user data namespacing, ensuring cross-account data isolation.</li>
-            <li>Designed a Command pattern API routing system in Jakarta EE, mapping endpoint handlers to URL paths as strategy interfaces to enable extensible routing without modifying core logic.</li>
-            <li>Implemented RESTful APIs in Java 21 / JDBC / PostgreSQL for multipart form submissions and binary file storage, integrating a React Native mobile client with backend services across a full-stack application.</li>
-          </ul>
-        </div>
-
-        <div class="t-item">
-          <strong>Guangzhou Dingnew Information Technology · ML Intern</strong> <span class="muted">(Dec 2023 – Feb 2024)</span>
-          <ul>
-            <li>Conducted comprehensive research on NASDAQ-100 stock index futures, leveraging machine learning algorithms such as Random Forest and SVM to analyze macroeconomic trends and design predictive trading strategies.</li>
-            <li>Integrated sentiment analysis of financial news using advanced NLP models like FinBERT to extract market sentiment, improving market trend prediction accuracy by 15%.</li>
-          </ul>
-        </div>
-
-        <div class="t-item">
-          <strong>Legend Biotech · Software Engineer Intern</strong> <span class="muted">(Feb 2023 – Apr 2023)</span>
-          <div class="muted">Java · JavaScript · Spring Boot · React · WeCom</div>
-          <ul>
-            <li>Developed and launched an internal attendance system (Java/JavaScript) integrated with WeCom, used by 500+ employees, improving attendance tracking efficiency by 40%.</li>
-            <li>Engineered patient data management modules for a CAR-T treatment tracking system using Spring Boot and improved frontend user experience with React, enabling real-time treatment schedule updates and progress tracking for 200+ patients, in collaboration with clinical staff and full-stack engineers.</li>
+            <li>Built Deal-Breaker Mode for Voraa using Flutter & Firebase Cloud Functions with real-time multi-constraint venue matching.</li>
+            <li>Architected a schema-driven form engine in React Native & TypeScript for IpserLab supporting 6-step workflows.</li>
+            <li>Delivered a distributed ingestion pipeline (8.1× throughput, 99.98% reliability) for Seattle Source Ranker.</li>
+            <li>Designed a two-layer async system (FastAPI + RabbitMQ) for LLM-powered letter generation on Echoes platform.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- SDE Projects -->
-    <section id="projects" style="margin-top:24px">
-      <h2>SDE Projects</h2>
-      <div class="grid projects">
+    <!-- Skills ─────────────────────────────────────── -->
+    <section class="tab-panel" id="panel-skills">
+      <p class="section-title">Technical Skills</p>
+      <div class="grid-4">
+
+        <div class="card">
+          <p class="skill-card-label">Languages</p>
+          <div class="pill-group">
+            <span class="pill">Java</span><span class="pill">Python</span>
+            <span class="pill">JavaScript</span><span class="pill">TypeScript</span>
+            <span class="pill">SQL</span><span class="pill">C++</span>
+            <span class="pill">HTML/CSS</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="skill-card-label">Frameworks & Tools</p>
+          <div class="pill-group">
+            <span class="pill">Spring Boot</span><span class="pill">React</span>
+            <span class="pill">FastAPI</span><span class="pill">Expo</span>
+            <span class="pill">Xcode</span><span class="pill">Hadoop</span>
+            <span class="pill">Apache Spark</span><span class="pill">Git</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="skill-card-label">Databases & Cloud</p>
+          <div class="pill-group">
+            <span class="pill">PostgreSQL</span><span class="pill">MySQL</span>
+            <span class="pill">MongoDB</span><span class="pill">Redis</span>
+            <span class="pill">AWS</span><span class="pill">Azure</span>
+            <span class="pill">Docker</span><span class="pill">Nginx</span>
+            <span class="pill">CI/CD</span><span class="pill">Linux</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="skill-card-label">Concepts</p>
+          <div class="pill-group">
+            <span class="pill">Distributed Systems</span>
+            <span class="pill">Microservices</span>
+            <span class="pill">System Design</span>
+            <span class="pill">Data Structures</span>
+            <span class="pill">SDLC</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="skill-card-label">AI Tools</p>
+          <div class="pill-group">
+            <span class="pill">Claude</span><span class="pill">GitHub Copilot</span>
+            <span class="pill">Cursor</span><span class="pill">ChatGPT</span>
+            <span class="pill">Prompt Engineering</span>
+            <span class="pill">Agent Workflow Design</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="skill-card-label">Deep Learning</p>
+          <div class="pill-group">
+            <span class="pill">CNN</span><span class="pill">LSTM</span>
+            <span class="pill">Bi-LSTM</span><span class="pill">PyTorch</span>
+            <span class="pill">Keras</span><span class="pill">Computer Vision</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="skill-card-label">Generative Models</p>
+          <div class="pill-group">
+            <span class="pill">Stable Diffusion</span>
+            <span class="pill">DreamBooth</span><span class="pill">LoRA</span>
+            <span class="pill">Grad-CAM</span>
+            <span class="pill">Fairness Analysis</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="skill-card-label">ML & Statistics</p>
+          <div class="pill-group">
+            <span class="pill">Scikit-learn</span>
+            <span class="pill">Feature Engineering</span>
+            <span class="pill">A/B Testing</span>
+            <span class="pill">Regression Analysis</span>
+            <span class="pill">Predictive Modeling</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Education ──────────────────────────────────── -->
+    <section class="tab-panel" id="panel-education">
+      <p class="section-title">Education</p>
+      <div class="card">
+        <div class="timeline">
+
+          <div class="t-item">
+            <div class="t-track"><div class="t-dot"></div><div class="t-line"></div></div>
+            <div class="t-body">
+              <div class="t-header">
+                <div>
+                  <p class="t-title">University of Washington, Seattle</p>
+                  <p class="t-role">M.S. in Information Science — Data Science & Artificial Intelligence</p>
+                </div>
+                <span class="t-date">Sep 2024 – Jun 2026</span>
+              </div>
+              <p class="t-stack">GPA: 3.9 / 4.0 &nbsp;·&nbsp; Expected</p>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-track"><div class="t-dot"></div><div class="t-line"></div></div>
+            <div class="t-body">
+              <div class="t-header">
+                <div>
+                  <p class="t-title">China Pharmaceutical University, Nanjing</p>
+                  <p class="t-role">B.S. in Information Management & Information Systems</p>
+                </div>
+                <span class="t-date">Sep 2020 – Jun 2024</span>
+              </div>
+              <p class="t-stack">GPA: 3.7 / 4.0</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience ─────────────────────────────────── -->
+    <section class="tab-panel" id="panel-experience">
+      <p class="section-title">Professional Experience</p>
+      <div class="card">
+        <div class="timeline">
+
+          <div class="t-item">
+            <div class="t-track"><div class="t-dot"></div><div class="t-line"></div></div>
+            <div class="t-body">
+              <div class="t-header">
+                <div>
+                  <p class="t-title">Voraa</p>
+                  <p class="t-role">Software Engineer – Capstone</p>
+                </div>
+                <span class="t-date">Sep 2025 – Present</span>
+              </div>
+              <p class="t-stack">Flutter · Firebase Cloud Functions · Node.js · Firestore</p>
+              <ul>
+                <li>Designed and implemented Deal-Breaker Mode across Flutter and Firebase Cloud Functions using Node.js, executing a multi-constraint filtering pipeline against a dynamic GenTag taxonomy for real-time venue matching.</li>
+                <li>Solved Firestore's single <code>array-contains</code> limitation by implementing in-memory multi-tag AND/OR filtering with pagination and fallback relax suggestions on empty results.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-track"><div class="t-dot"></div><div class="t-line"></div></div>
+            <div class="t-body">
+              <div class="t-header">
+                <div>
+                  <p class="t-title">IpserLab</p>
+                  <p class="t-role">Software Engineer Intern</p>
+                </div>
+                <span class="t-date">Jun 2025 – Dec 2025</span>
+              </div>
+              <p class="t-stack">React Native · TypeScript · Jakarta EE · Java 21 · JDBC · PostgreSQL</p>
+              <ul>
+                <li>Architected a schema-driven form engine in React Native & TypeScript supporting 6-step workflows with 28+ dynamic fields, decoupling UI from business logic via reusable components and custom hooks.</li>
+                <li>Engineered an offline-first application lifecycle system managing draft-to-completion submission state via AsyncStorage with per-user data namespacing, ensuring cross-account data isolation.</li>
+                <li>Designed a Command pattern API routing system in Jakarta EE, mapping endpoint handlers to URL paths as strategy interfaces to enable extensible routing without modifying core logic.</li>
+                <li>Implemented RESTful APIs in Java 21 / JDBC / PostgreSQL for multipart form submissions and binary file storage, integrating a React Native mobile client with backend services across a full-stack application.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-track"><div class="t-dot"></div><div class="t-line"></div></div>
+            <div class="t-body">
+              <div class="t-header">
+                <div>
+                  <p class="t-title">Guangzhou Dingnew Information Technology</p>
+                  <p class="t-role">Machine Learning Intern</p>
+                </div>
+                <span class="t-date">Dec 2023 – Feb 2024</span>
+              </div>
+              <ul>
+                <li>Conducted comprehensive research on NASDAQ-100 stock index futures, leveraging Random Forest and SVM to analyze macroeconomic trends and design predictive trading strategies.</li>
+                <li>Integrated sentiment analysis of financial news using FinBERT to extract market sentiment, improving market trend prediction accuracy by 15%.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-track"><div class="t-dot"></div><div class="t-line"></div></div>
+            <div class="t-body">
+              <div class="t-header">
+                <div>
+                  <p class="t-title">Legend Biotech</p>
+                  <p class="t-role">Software Engineer Intern</p>
+                </div>
+                <span class="t-date">Feb 2023 – Apr 2023</span>
+              </div>
+              <p class="t-stack">Java · JavaScript · Spring Boot · React · WeCom</p>
+              <ul>
+                <li>Developed and launched an internal attendance system (Java/JavaScript) integrated with WeCom, used by 500+ employees, improving attendance tracking efficiency by 40%.</li>
+                <li>Engineered patient data management modules for a CAR-T treatment tracking system using Spring Boot and improved frontend user experience with React, enabling real-time treatment schedule updates and progress tracking for 200+ patients.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SDE Projects ───────────────────────────────── -->
+    <section class="tab-panel" id="panel-projects">
+      <p class="section-title">SDE Projects</p>
+      <div class="grid-2">
+
         <article class="card">
-          <h3>Seattle Source Ranker</h3>
-          <p class="muted">Python · Celery · Redis · GraphQL · REST · React · GitHub Actions · Bash</p>
+          <h3 class="card-title">Seattle Source Ranker</h3>
+          <p class="card-sub">Python · Celery · Redis · GraphQL · REST · React · GitHub Actions</p>
           <ul>
             <li>Built a distributed ingestion system with Celery & Redis to collect and validate 400K+ repositories from 28K Seattle developers, achieving 8.1× throughput improvement and 99.98% ingestion reliability under rate limits.</li>
             <li>Architected a fault-tolerant API orchestration layer combining GraphQL and REST fallback strategies to correct inconsistent watcher metrics, eliminating ~2% invalid repositories and ensuring ranking data integrity.</li>
             <li>Implemented a rate-limit-aware token rotation system with adaptive backoff and idempotent retries, reducing rate-limit failures by 92% and enabling full dataset rebuilds within 60–90 minutes.</li>
-            <li>Automated daily dataset updates and static deployment via GitHub Actions (Bash scripts), generating 10K+ optimized JSON datasets consumed by a React interface with real-time search and sub-50ms page load times.</li>
+            <li>Automated daily dataset updates and static deployment via GitHub Actions, generating 10K+ optimized JSON datasets consumed by a React interface with real-time search and sub-50ms page load times.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Sep 2025 – Dec 2025</span>
-            <a class="gh-link" href="https://github.com/Gin-87/Seattle-Source-Ranker" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+            <a class="gh-btn" href="https://github.com/Gin-87/Seattle-Source-Ranker" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
           </div>
         </article>
 
         <article class="card">
-          <h3>Echoes — Virtual Character Letter Platform</h3>
-          <p class="muted">Java · Spring Boot · Python · FastAPI · Redis · MongoDB · MySQL · RabbitMQ · AWS (EC2, CloudWatch) · Docker · Nginx</p>
+          <h3 class="card-title">Echoes — Virtual Character Letter Platform</h3>
+          <p class="card-sub">Java · Spring Boot · Python · FastAPI · Redis · MongoDB · MySQL · RabbitMQ · AWS · Docker · Nginx</p>
           <ul>
             <li>Built a Python FastAPI service for LLM-powered letter generation with dynamic character-specific prompts, multi-language support and multi-turn context, integrating GPT and Doubao via OpenAI-compatible APIs.</li>
             <li>Refactored LLM integration using the Strategy Pattern, enabling zero-change backend extension; added exponential backoff retry with 4xx short-circuit to eliminate redundant retries on auth failures.</li>
             <li>Architected a two-layer async system to decouple Java-Python interactions: FastAPI BackgroundTasks for non-blocking HTTP responses, and RabbitMQ for persistent queued task delivery with automatic retry on failure.</li>
-            <li>Reduced latency and supported flexible data modeling by implementing Redis caching and a multi-database architecture, using MongoDB for unstructured letter content and MySQL for structured user and role data.</li>
-            <li>Ensured reliable deployment and operational stability by containerizing services with Docker, deploying to Amazon EC2, configuring Nginx as a reverse proxy, and setting up AWS CloudWatch for monitoring.</li>
+            <li>Reduced latency by implementing Redis caching and a multi-database architecture — MongoDB for unstructured letter content, MySQL for structured user and role data.</li>
+            <li>Ensured reliable deployment by containerizing with Docker, deploying to Amazon EC2, configuring Nginx as reverse proxy, and setting up AWS CloudWatch for monitoring.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Nov 2024 – Apr 2025</span>
-            <a class="gh-link" href="https://github.com/Gin-87/Echoes" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+            <a class="gh-btn" href="https://github.com/Gin-87/Echoes" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
           </div>
         </article>
 
         <article class="card">
-          <h3>Online Food Order System</h3>
-          <p class="muted">Java · Spring Boot · Spring Security + JWT · Spring State Machine · Redis · WebSocket</p>
+          <h3 class="card-title">Online Food Order System</h3>
+          <p class="card-sub">Java · Spring Boot · Spring Security + JWT · Spring State Machine · Redis · WebSocket</p>
           <ul>
             <li>Built core modules (user, menu, order management) with Spring Boot, using Spring State Machine to manage complex order state transitions.</li>
-            <li>Implemented authentication and authorization with Spring Security + JWT, adopting RBAC (Role-Based Access Control) for fine-grained permission management.</li>
+            <li>Implemented authentication and authorization with Spring Security + JWT, adopting RBAC for fine-grained permission management.</li>
             <li>Integrated Redis to cache frequently accessed data, reducing database load and enhancing system performance.</li>
-            <li>Automated order status updates with Spring Task to improve operational efficiency and enabled real-time notifications using WebSocket for better user experience.</li>
+            <li>Automated order status updates with Spring Task and enabled real-time notifications using WebSocket for better user experience.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Sep 2024 – Nov 2024</span>
           </div>
         </article>
 
         <article class="card">
-          <h3>MiniSpotify — Android Music Favorites App</h3>
-          <p class="muted">Kotlin · Android Jetpack · Hilt · Coroutines · Retrofit · REST API · Room Database · ExoPlayer</p>
+          <h3 class="card-title">MiniSpotify — Android Music Favorites App</h3>
+          <p class="card-sub">Kotlin · Android Jetpack · Hilt · Coroutines · Retrofit · Room Database · ExoPlayer</p>
           <ul>
-            <li>Built a Spotify-inspired Android app in Kotlin using Android Jetpack with Jetpack Compose UI and MVVM architecture; dependency injection via Hilt.</li>
+            <li>Built a Spotify-inspired Android app in Kotlin with Jetpack Compose UI and MVVM architecture; dependency injection via Hilt.</li>
             <li>Implemented Album Feed, Playlist Details, and Favorites screens with Compose, aligned to MVVM separation of concerns.</li>
-            <li>Created a mock REST API with JSON Server supplying development/test data, integrated end-to-end with Retrofit for data retrieval, followed by a small Ktor endpoint prototype for learning/testing.</li>
-            <li>Enabled offline access to favorites with Room Database, using Coroutines to keep the UI responsive while persisting user selections.</li>
-            <li>Integrated Google ExoPlayer for continuous music playback with reliable play/pause/seek controls.</li>
+            <li>Created a mock REST API with JSON Server for development data, integrated with Retrofit; added a small Ktor endpoint prototype for learning/testing.</li>
+            <li>Enabled offline favorites with Room Database; used Coroutines to keep UI responsive while persisting user selections.</li>
+            <li>Integrated Google ExoPlayer for continuous music playback with play/pause/seek controls.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Sep 2024 – Nov 2024</span>
           </div>
         </article>
+
       </div>
     </section>
 
-    <!-- AI & ML Projects -->
-    <section id="ml-projects" style="margin-top:24px">
-      <h2>AI & ML Projects</h2>
-      <div class="grid projects">
+    <!-- ML Projects ────────────────────────────────── -->
+    <section class="tab-panel" id="panel-ml">
+      <p class="section-title">AI & ML Projects</p>
+      <div class="grid-2">
 
         <article class="card">
-          <h3>Fair Diffusion: Mitigating Demographic Bias in Text-to-Image Models</h3>
-          <p class="muted">Stable Diffusion v1.4 · LoRA Fine-Tuning · FairFace (ResNet-34) · KL Divergence · Prompt Engineering · Output Filtering</p>
+          <h3 class="card-title">Fair Diffusion: Mitigating Demographic Bias in Text-to-Image Models</h3>
+          <p class="card-sub">Stable Diffusion v1.4 · LoRA Fine-Tuning · FairFace (ResNet-34) · KL Divergence · DreamBooth</p>
           <ul>
-            <li>Built a 4-phase bias analysis pipeline for Stable Diffusion v1.4—baseline generation, demographic detection, prompt engineering, and output filtering—using stereotype-prone prompts (e.g., "CEO", "nurse", "engineer").</li>
-            <li>Quantified gender/race distribution with the FairFace (ResNet-34) classifier and KL divergence against a uniform target; baseline showed imbalance (KL gender 0.1201, KL race 0.6375) with under-representation of several non-White groups.</li>
-            <li>Fine-tuned Stable Diffusion via DreamBooth + LoRA adapters on balanced demographic-role concept tokens, achieving parameter-efficient bias correction with lower GPU memory use and faster training convergence.</li>
-            <li>Designed a hybrid evaluation framework combining quantitative metrics (FairFace, KL divergence) with qualitative review and LLM-assisted alignment scoring.</li>
+            <li>Built a 4-phase bias analysis pipeline for Stable Diffusion v1.4 — baseline generation, demographic detection, prompt engineering, and output filtering — using stereotype-prone prompts (e.g., "CEO", "nurse", "engineer").</li>
+            <li>Quantified gender/race distribution with the FairFace classifier and KL divergence; baseline showed imbalance (KL gender 0.1201, KL race 0.6375) with under-representation of several non-White groups.</li>
+            <li>Fine-tuned Stable Diffusion via DreamBooth + LoRA adapters on balanced demographic-role concept tokens, achieving parameter-efficient bias correction with lower GPU memory use.</li>
+            <li>Designed a hybrid evaluation framework combining quantitative metrics with qualitative review and LLM-assisted alignment scoring.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Sep 2024 – Nov 2024</span>
-            <a class="gh-link" href="https://github.com/Gin-87/Fair-Diffusion" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+            <a class="gh-btn" href="https://github.com/Gin-87/Fair-Diffusion" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
           </div>
         </article>
 
         <article class="card">
-          <h3>Quantifying Fairness in Driver-Distraction Detection</h3>
-          <p class="muted">VGG-16 · State Farm Distracted Driver Dataset · Grad-CAM · Fairness Analysis · Computer Vision</p>
+          <h3 class="card-title">Quantifying Fairness in Driver-Distraction Detection</h3>
+          <p class="card-sub">VGG-16 · State Farm Dataset · Grad-CAM · Fairness Analysis · Computer Vision</p>
           <ul>
-            <li>Fine-tuned VGG-16 on the State Farm Distracted Driver dataset (~22k images; 10 behavior classes), with reproducible training (fixed seeds, SGD, LR=1e-3, momentum=0.9).</li>
-            <li>Built an evaluation pipeline (train/val split, accuracy + confusion matrix) to expose behavior-level failure modes (e.g., normal driving vs. talking to passenger).</li>
-            <li>Conducted subgroup fairness analysis by sampling 100 White and 100 Non-White driver images and generating Grad-CAM heatmaps to inspect attention patterns.</li>
-            <li>Found potential attention bias: models focused on hands/mouth for White drivers but drifted to irrelevant regions for Non-White drivers—flagging a fairness risk for downstream use.</li>
+            <li>Fine-tuned VGG-16 on the State Farm Distracted Driver dataset (~22k images; 10 behavior classes) with reproducible training (fixed seeds, SGD, LR=1e-3, momentum=0.9).</li>
+            <li>Built an evaluation pipeline (train/val split, accuracy + confusion matrix) to expose behavior-level failure modes.</li>
+            <li>Conducted subgroup fairness analysis by sampling 100 White and 100 Non-White driver images, generating Grad-CAM heatmaps to inspect model attention patterns.</li>
+            <li>Found potential attention bias: models focused on hands/mouth for White drivers but drifted to irrelevant regions for Non-White drivers — flagging a downstream fairness risk.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Sep 2024 – Nov 2024</span>
-            <a class="gh-link" href="https://github.com/Gin-87/Bias-in-Distracted-Driving-Detection-Systems" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+            <a class="gh-btn" href="https://github.com/Gin-87/Bias-in-Distracted-Driving-Detection-Systems" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
           </div>
         </article>
 
         <article class="card">
-          <h3>Predicting Yelp Ratings for Restaurants</h3>
-          <p class="muted">Yelp Open Dataset · Feature Engineering · Ridge Regression · Random Forest · SVR · Model Card</p>
+          <h3 class="card-title">Predicting Yelp Ratings for Restaurants</h3>
+          <p class="card-sub">Yelp Open Dataset · Feature Engineering · Ridge Regression · Random Forest · SVR</p>
           <ul>
-            <li>Selected and profiled the Yelp Open Dataset (focused on restaurants), spanning 150,346 businesses and 6,990,280 user tips/reviews; defined the task as rating prediction and key-factor discovery.</li>
-            <li>Engineered a clean, analysis-ready table by flattening nested attributes, joining core business metadata, and validating duplicates/quality prior to modeling.</li>
-            <li>Identified actionable drivers (e.g., menu pricing and delivery services) with secondary contributors (NoiseLevel, HasTV, Ambience, OutdoorSeating) and deprioritized low-impact features.</li>
-            <li>Documented limitations and proposed external-signal fusion (events, weather, local economics) to boost predictive power; drafted a Model Card for transparency.</li>
+            <li>Profiled the Yelp Open Dataset spanning 150,346 businesses and 6.99M user tips/reviews; defined the task as rating prediction and key-factor discovery.</li>
+            <li>Engineered a clean, analysis-ready table by flattening nested attributes, joining core business metadata, and validating data quality prior to modeling.</li>
+            <li>Identified actionable drivers (menu pricing, delivery services) with secondary contributors (NoiseLevel, HasTV, Ambience) and deprioritized low-impact features.</li>
+            <li>Documented limitations and proposed external-signal fusion (events, weather, local economics); drafted a Model Card for transparency.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Sep 2024 – Nov 2024</span>
           </div>
         </article>
 
         <article class="card">
-          <h3>Quantitative Trading of Stocks Using AI</h3>
-          <p class="muted">Ridge Regression · Random Forest · Support Vector Regression (SVR) · Financial Data Analysis</p>
+          <h3 class="card-title">Quantitative Trading of Stocks Using AI</h3>
+          <p class="card-sub">Ridge Regression · Random Forest · SVR · Financial Data Analysis</p>
           <ul>
-            <li>Designed a quantitative trading strategy by integrating machine learning models (Ridge Regression, Random Forest, SVR) with a traditional multi-factor approach to forecast stock returns and construct investment portfolios.</li>
-            <li>Utilized data from the CSI All Share Index (2020–2024) to analyze 31 financial factors, systematically screened using Information Coefficient (IC) analysis and Random Forest algorithms.</li>
-            <li>Achieved 16.41% excess returns, a profit-loss ratio of 5.36, and a 14.2% improvement in excess returns over the benchmark using SVR, demonstrating superior risk-adjusted performance in portfolio optimization.</li>
+            <li>Designed a quantitative trading strategy integrating Ridge Regression, Random Forest, and SVR with a traditional multi-factor approach to forecast stock returns and construct investment portfolios.</li>
+            <li>Analyzed 31 financial factors from the CSI All Share Index (2020–2024) using Information Coefficient (IC) analysis and Random Forest screening.</li>
+            <li>Achieved 16.41% excess returns, a profit-loss ratio of 5.36, and 14.2% improvement over benchmark using SVR, validating superior risk-adjusted performance.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Nov 2024 – Present</span>
           </div>
         </article>
 
         <article class="card">
-          <h3>Deep Learning for Sleep Physiological Signal Classification</h3>
-          <p class="muted">CNN · LSTM · Bi-LSTM · EEG/EOG Signal Processing · Deep Learning</p>
+          <h3 class="card-title">Deep Learning for Sleep Physiological Signal Classification</h3>
+          <p class="card-sub">CNN · LSTM · Bi-LSTM · EEG/EOG Signal Processing · PyTorch</p>
           <ul>
-            <li>Built and trained deep learning models (CNN, LSTM, Bi-LSTM) for multi-modal EEG/EOG signals, enabling accurate sleep stage classification.</li>
+            <li>Built and trained CNN, LSTM, and Bi-LSTM models for multi-modal EEG/EOG signals, enabling accurate sleep stage classification.</li>
             <li>Applied signal preprocessing and noise filtering to restore sampling frequency and improve feature clarity.</li>
-            <li>Designed and evaluated classification pipeline, achieving 92% accuracy and demonstrating robustness across multiple subjects.</li>
-            <li>Optimized training through multi-input architecture to better capture temporal and spatial dependencies in physiological data.</li>
+            <li>Designed and evaluated a multi-input classification pipeline, achieving 92% accuracy with robustness across multiple subjects.</li>
           </ul>
-          <div class="project-links">
+          <div class="project-footer">
             <span class="chip">Sep 2024 – Nov 2024</span>
           </div>
         </article>
@@ -393,34 +771,102 @@
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" style="margin-top:24px">
-      <h2>Contact</h2>
-      <div class="card">
-        <p>If my work aligns with what you're building, I'd love to connect.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn" href="mailto:wszhao87@gmail.com?subject=Interview%20Invitation&body=Hi%20Wenshu%2C%0D%0AWe%27d%20love%20to%20chat%20about...">✉️ <span>Email me</span></a>
-          <a class="btn secondary" href="https://www.linkedin.com/in/wenshu-zhao" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">🔗 LinkedIn</a>
-          <a class="btn secondary" href="https://github.com/Gin-87" target="_blank" rel="noopener noreferrer" aria-label="GitHub">🐙 GitHub</a>
-        </div>
+    <!-- Contact ────────────────────────────────────── -->
+    <section class="tab-panel" id="panel-contact">
+      <p class="section-title">Get in Touch</p>
+      <p style="color:var(--muted);margin:0 0 24px;font-size:15px">If my work aligns with what you're building, I'd love to connect.</p>
+      <div class="contact-grid">
+        <a class="contact-item" href="mailto:wszhao87@gmail.com?subject=Interview%20Invitation">
+          <div class="contact-icon">✉️</div>
+          <div><p class="contact-label">Email</p><p class="contact-value">wszhao87@gmail.com</p></div>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/wenshu-zhao" target="_blank" rel="noopener noreferrer">
+          <div class="contact-icon">🔗</div>
+          <div><p class="contact-label">LinkedIn</p><p class="contact-value">wenshu-zhao</p></div>
+        </a>
+        <a class="contact-item" href="https://github.com/Gin-87" target="_blank" rel="noopener noreferrer">
+          <div class="contact-icon">🐙</div>
+          <div><p class="contact-label">GitHub</p><p class="contact-value">Gin-87</p></div>
+        </a>
+        <a class="contact-item" href="CV_SDE_Wenshu_Zhao.pdf" target="_blank" rel="noopener">
+          <div class="contact-icon">📄</div>
+          <div><p class="contact-label">Resume</p><p class="contact-value">Download PDF</p></div>
+        </a>
+        <a class="contact-item" href="tel:+16269976248">
+          <div class="contact-icon">📞</div>
+          <div><p class="contact-label">Phone</p><p class="contact-value">+1 626-997-6248</p></div>
+        </a>
+        <a class="contact-item" href="#" style="cursor:default;opacity:.5" aria-label="Location">
+          <div class="contact-icon">📍</div>
+          <div><p class="contact-label">Location</p><p class="contact-value">Seattle, WA</p></div>
+        </a>
       </div>
     </section>
 
   </main>
 
   <footer>
-    © <span id="year"></span> Wenshu Zhao · <a href="https://gin-87.github.io/" target="_blank" rel="noopener">gin-87.github.io</a> · <a href="#about">Back to top ↑</a>
+    © <span id="year"></span> Wenshu Zhao &nbsp;·&nbsp;
+    <a href="https://gin-87.github.io/" target="_blank" rel="noopener">gin-87.github.io</a>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('themeToggle').addEventListener('click', ()=>{
-      const html = document.documentElement;
-      const nowLight = html.classList.toggle('light');
-      localStorage.setItem('theme', nowLight ? 'light' : 'dark');
+    // ── Tab routing ──────────────────────────────────
+    const PANELS = ['about','skills','education','experience','projects','ml','contact'];
+
+    function showTab(id) {
+      if (!PANELS.includes(id)) id = 'about';
+      PANELS.forEach(p => {
+        const panel = document.getElementById('panel-' + p);
+        const btn   = document.querySelector(`.tab-btn[data-tab="${p}"]`);
+        if (panel) panel.classList.toggle('active', p === id);
+        if (btn)   btn.classList.toggle('active', p === id);
+      });
+      // Scroll header into view smoothly on tab switch
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Read hash on load
+    const initHash = window.location.hash.replace('#','');
+    showTab(initHash || 'about');
+
+    // Tab buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        history.pushState(null, '', '#' + tab);
+        showTab(tab);
+      });
     });
-    document.querySelectorAll('a[href^="http"]').forEach(a=>{
-      a.target = '_blank'; a.rel = 'noopener noreferrer';
+
+    // "See my work" button in hero
+    document.querySelectorAll('[data-tab]').forEach(el => {
+      if (el.tagName === 'BUTTON' && !el.classList.contains('tab-btn')) {
+        el.addEventListener('click', () => {
+          const tab = el.dataset.tab;
+          history.pushState(null, '', '#' + tab);
+          showTab(tab);
+        });
+      }
+    });
+
+    // Brand logo
+    document.querySelector('.brand').addEventListener('click', e => {
+      e.preventDefault();
+      history.pushState(null, '', '#about');
+      showTab('about');
+    });
+
+    // Browser back/forward
+    window.addEventListener('popstate', () => {
+      showTab(window.location.hash.replace('#','') || 'about');
+    });
+
+    // ── Theme toggle ─────────────────────────────────
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const light = document.documentElement.classList.toggle('light');
+      localStorage.setItem('theme', light ? 'light' : 'dark');
     });
   </script>
 </body>
