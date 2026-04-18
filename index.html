@@ -10,8 +10,8 @@
   <meta property="og:title" content="Wenshu Zhao – SDE Portfolio">
   <meta property="og:description" content="UW graduate student specializing in backend & full-stack development with Java, Spring Boot, React, Redis, Docker, and AWS. Open to SDE roles.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.linkedin.com/in/wenshu-zhao">
-  <meta property="og:image" content="avatar.jpg">
+  <meta property="og:url" content="https://gin-87.github.io/">
+  <meta property="og:image" content="photo.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- PWA -->
@@ -73,6 +73,11 @@
     .light .timeline::before{ background:#e5e7eb }
     .t-item{ position:relative; margin:16px 0; padding-left:8px }
     .t-item::before{ content:""; position:absolute; left:-18px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px var(--ring) }
+    .project-links{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; align-items:center }
+    .gh-link{ display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:8px; font-size:13px; font-weight:600; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15); color:var(--text); transition:background .15s }
+    .gh-link:hover{ background:rgba(255,255,255,.13); color:var(--text) }
+    .light .gh-link{ background:#f1f5f9; border-color:#e2e8f0; color:var(--light-text) }
+    .light .gh-link:hover{ background:#e2e8f0; color:var(--light-text) }
     footer{ margin:50px 0 30px; text-align:center; font-size:14px; color:var(--muted) }
 
     @media (max-width: 900px){
@@ -95,12 +100,12 @@
     "@context":"https://schema.org",
     "@type":"Person",
     "name":"Wenshu Zhao",
-    "url":"https://www.linkedin.com/in/wenshu-zhao",
-    "image":"avatar.jpg",
+    "url":"https://gin-87.github.io/",
+    "image":"photo.jpg",
     "jobTitle":"Software Development Engineer",
-    "email":"mailto:wszhao87@gmail.com",
+    "email":"wszhao87@gmail.com",
     "telephone":"+1-626-997-6248",
-    "sameAs":["https://www.linkedin.com/in/wenshu-zhao"]
+    "sameAs":["https://www.linkedin.com/in/wenshu-zhao","https://github.com/Gin-87"]
   }
   </script>
 
@@ -126,7 +131,8 @@
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
+        <a href="#projects">SDE Projects</a>
+        <a href="#ml-projects">ML Projects</a>
         <a href="#contact">Contact</a>
         <button id="themeToggle" class="btn secondary" aria-label="Toggle theme">🌓 Theme</button>
       </div>
@@ -140,10 +146,9 @@
         <div style="display:flex;gap:18px;align-items:center">
           <img class="avatar" src="photo.jpg" alt="Wenshu Zhao headshot">
           <div>
-            <h1>Hi, I’m <span style="color:var(--brand)">Wenshu Zhao</span></h1>
-            <p class="lead">Turning ideas into reliable software products—from microservices and secure workflows to real-time, <Strong>AI-driven</Strong> user experiences—currently pursuing an M.S. at University of Washington with hands-on experience in <Strong>Machine Learning</Strong> and open to <Strong>SDE</Strong> roles.</p>
+            <h1>Hi, I'm <span style="color:var(--brand)">Wenshu Zhao</span></h1>
+            <p class="lead">Turning ideas into reliable software products—from microservices and secure workflows to real-time, <strong>AI-driven</strong> user experiences—currently pursuing an M.S. at University of Washington with hands-on experience in <strong>Machine Learning</strong> and open to <strong>SDE</strong> roles.</p>
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-              <!-- <a class="btn" href="CV_SDE_Wenshu Zhao.pdf" download>📄 Download Resume (PDF)</a> -->
               <a class="btn" href="CV_SDE_Wenshu_Zhao.pdf" target="_blank" rel="noopener">📄 <span>Download Resume (PDF)</span></a>
               <a class="btn secondary" href="#projects">See my work ↓</a>
             </div>
@@ -153,19 +158,19 @@
           <span class="chip">📍 Seattle, WA</span>
           <a class="chip" href="mailto:wszhao87@gmail.com">✉️ wszhao87@gmail.com</a>
           <a class="chip" href="https://www.linkedin.com/in/wenshu-zhao" rel="me">🔗 LinkedIn</a>
-          <a class="chip" href="tel:+16269976248">📞 +1 626-997-XXXX</a>
-          <a class="chip" href="https://github.com/Gin-87" rel="me">🐙 Github</a>
+          <a class="chip" href="https://github.com/Gin-87" rel="me">🐙 GitHub</a>
+          <a class="chip" href="tel:+16269976248">📞 +1 626-997-6248</a>
         </div>
       </div>
 
-      <!-- Highlights (from your résumé) -->
+      <!-- Highlights -->
       <aside class="card" aria-label="Highlights">
         <h2 style="margin-top:0">Recent Highlights</h2>
         <ul>
-          <li>Designed modular backend services with a custom ORM and RESTful APIs for reliable JSON data exchange.</li>
-          <li>Built responsive React admin & user interfaces with TailwindCSS and Chart.js for interactive visualization.</li>
-          <li>Implemented secure authentication with email validation, server-side login, token sessions, and 2FA support.</li>
-          <li>Launched a 6-step dynamic application workflow with multi-file uploads and multi-currency payments.</li>
+          <li>Built Deal-Breaker Mode for Voraa using Flutter & Firebase Cloud Functions with real-time multi-constraint venue matching.</li>
+          <li>Architected a schema-driven form engine in React Native & TypeScript for IpserLab with offline-first state management.</li>
+          <li>Delivered a distributed ingestion pipeline (8.1× throughput, 99.98% reliability) for Seattle Source Ranker.</li>
+          <li>Designed a two-layer async system (FastAPI + RabbitMQ) for LLM-powered letter generation on Echoes platform.</li>
         </ul>
       </aside>
     </section>
@@ -174,14 +179,14 @@
     <section id="skills" style="margin-top:24px">
       <h2>Skills</h2>
       <div class="grid skills">
-        <div class="card"><strong>Languages</strong><div class="muted">Java · Python · JavaScript · SQL · HTML/CSS · C++</div></div>
-        <div class="card"><strong>Frameworks & Tools</strong><div class="muted">Spring Boot · React · Vue · Hadoop · Apache Spark · TensorFlow · PyTorch · Git</div></div>
-        <div class="card"><strong>Databases & Caching</strong><div class="muted">MySQL · SQL Server · Redis · MongoDB</div></div>
-        <div class="card"><strong>Cloud & DevOps</strong><div class="muted">AWS · Docker · CI/CD · Linux · Azure · Nginx</div></div>
-        <div class="card"><strong>Concepts</strong><div class="muted">RESTful APIs · Microservices · System Design · SDLC · Encryption · AuthN/Z</div></div>
+        <div class="card"><strong>Languages</strong><div class="muted">Java · Python · JavaScript · TypeScript · SQL · C++ · HTML/CSS</div></div>
+        <div class="card"><strong>Frameworks & Tools</strong><div class="muted">Spring Boot · React · FastAPI · Expo · Xcode · Hadoop · Apache Spark · Git</div></div>
+        <div class="card"><strong>Databases & Cloud</strong><div class="muted">PostgreSQL · MySQL · MongoDB · SQL Server · Redis · AWS · Azure · Docker · Linux · CI/CD · Nginx</div></div>
+        <div class="card"><strong>Concepts</strong><div class="muted">Distributed Systems · Microservices · System Design · Data Structures · SDLC</div></div>
+        <div class="card"><strong>AI Tools</strong><div class="muted">Claude · GitHub Copilot · Cursor · ChatGPT · Prompt Engineering · Agent Workflow Design</div></div>
         <div class="card"><strong>Deep Learning</strong><div class="muted">CNN · LSTM · Bi-LSTM · Multi-Input Architectures · Computer Vision · PyTorch · Keras</div></div>
         <div class="card"><strong>Generative Models</strong><div class="muted">Stable Diffusion · DreamBooth · LoRA · Prompt Engineering · Output Filtering · Grad-CAM · Fairness Analysis</div></div>
-        <div class="card"><strong>ML & Statistics</strong><div class="muted">Scikit-learn · Feature Engineering · A/B Testing · Supervised & Unsupervised Learning · Regression Analysis · Predictive Modeling</div></div>
+        <div class="card"><strong>ML & Statistics</strong><div class="muted">Scikit-learn · Feature Engineering · A/B Testing · Supervised & Unsupervised Learning · Regression Analysis</div></div>
       </div>
     </section>
 
@@ -190,12 +195,12 @@
       <h2>Education</h2>
       <div class="card timeline">
         <div class="t-item">
-          <strong>University of Washington, Seattle — M.S. in Information Management</strong>
-          <div class="muted">GPA: 3.8/4.0 · (Sep 2024 – Jun 2026, Expected)</div>
+          <strong>University of Washington, Seattle — M.S. in Information Science</strong>
+          <div class="muted">Specialization: Data Science & Artificial Intelligence &nbsp;·&nbsp; GPA: 3.9/4.0 &nbsp;·&nbsp; Sep 2024 – Jun 2026 (Expected)</div>
         </div>
         <div class="t-item">
           <strong>China Pharmaceutical University, Nanjing — B.S. in Information Management & Information Systems</strong>
-          <div class="muted">GPA: 3.7/4.0 · (Sep 2020 – Jun 2024)</div>
+          <div class="muted">GPA: 3.7/4.0 &nbsp;·&nbsp; Sep 2020 – Jun 2024</div>
         </div>
       </div>
     </section>
@@ -205,31 +210,27 @@
       <h2>Experience</h2>
       <div class="card timeline">
         <div class="t-item">
-          <strong>Voraa · Full-Stack Engineer</strong> <span class="muted"> (Dec 2025 – Present)</span>
-          <div class="muted">Backend & Full-stack · Java, React, Redis, PostgreSQL, NLP</div>
-          <!-- <ul>
-            <li>Engineered modular backend services using Java, JavaScript, and MySQL, with a custom ORM layer for persistence and implemented RESTful APIs to enable reliable JSON-based data exchange.</li>
-            <li>Built responsive user/admin interfaces with React.js and TailwindCSS, including dynamic multi-step forms and state management, and integrated Chart.js for interactive data visualization.</li>
-            <li>Implemented secure authentication system with email validation, server-side login, token-based session management, and 2FA support.</li>
-            <li>Designed and launched a 6-step dynamic application workflow supporting applicant details, project data, multi-file uploads (PDF, PNG, JPG, DOC), and multi-currency payment integration (USD & Zimbabwean Dollar).</li>
-            <li>Delivered usability features including draft-saving & progress tracking, and integrated Email/SMS notifications for automated status updates.</li>
-          </ul> -->
-        </div>
-
-        <div class="t-item">
-          <strong>IpserLab · Full-Stack Intern</strong> <span class="muted"> (Jun 2025 – Present)</span>
-          <div class="muted">Backend & Full-stack · Java, React, MySQL, TailwindCSS</div>
+          <strong>Voraa · Software Engineer – Capstone</strong> <span class="muted">(Sep 2025 – Present)</span>
+          <div class="muted">Flutter · Firebase Cloud Functions · Node.js · Firestore</div>
           <ul>
-            <li>Engineered modular backend services using Java, JavaScript, and MySQL, with a custom ORM layer for persistence and implemented RESTful APIs to enable reliable JSON-based data exchange.</li>
-            <li>Built responsive user/admin interfaces with React.js and TailwindCSS, including dynamic multi-step forms and state management, and integrated Chart.js for interactive data visualization.</li>
-            <li>Implemented secure authentication system with email validation, server-side login, token-based session management, and 2FA support.</li>
-            <li>Designed and launched a 6-step dynamic application workflow supporting applicant details, project data, multi-file uploads (PDF, PNG, JPG, DOC), and multi-currency payment integration (USD & Zimbabwean Dollar).</li>
-            <li>Delivered usability features including draft-saving & progress tracking, and integrated Email/SMS notifications for automated status updates.</li>
+            <li>Designed and implemented Deal-Breaker Mode across Flutter and Firebase Cloud Functions using Node.js, executing a multi-constraint filtering pipeline against a dynamic GenTag taxonomy for real-time venue matching.</li>
+            <li>Solved Firestore's single <code>array-contains</code> limitation by implementing in-memory multi-tag AND/OR filtering with pagination and fallback relax suggestions on empty results.</li>
           </ul>
         </div>
 
         <div class="t-item">
-          <strong>Guangzhou Dingnew Information Technology Co., Ltd · ML Intern</strong> <span class="muted"> (Dec 2023 – Feb 2024)</span>
+          <strong>IpserLab · Software Engineer Intern</strong> <span class="muted">(Jun 2025 – Dec 2025)</span>
+          <div class="muted">React Native · TypeScript · Jakarta EE · Java 21 · JDBC · PostgreSQL</div>
+          <ul>
+            <li>Architected a schema-driven form engine in React Native & TypeScript supporting 6-step workflows with 28+ dynamic fields, decoupling UI from business logic via reusable components and custom hooks.</li>
+            <li>Engineered an offline-first application lifecycle system managing draft-to-completion submission state via AsyncStorage with per-user data namespacing, ensuring cross-account data isolation.</li>
+            <li>Designed a Command pattern API routing system in Jakarta EE, mapping endpoint handlers to URL paths as strategy interfaces to enable extensible routing without modifying core logic.</li>
+            <li>Implemented RESTful APIs in Java 21 / JDBC / PostgreSQL for multipart form submissions and binary file storage, integrating a React Native mobile client with backend services across a full-stack application.</li>
+          </ul>
+        </div>
+
+        <div class="t-item">
+          <strong>Guangzhou Dingnew Information Technology · ML Intern</strong> <span class="muted">(Dec 2023 – Feb 2024)</span>
           <ul>
             <li>Conducted comprehensive research on NASDAQ-100 stock index futures, leveraging machine learning algorithms such as Random Forest and SVM to analyze macroeconomic trends and design predictive trading strategies.</li>
             <li>Integrated sentiment analysis of financial news using advanced NLP models like FinBERT to extract market sentiment, improving market trend prediction accuracy by 15%.</li>
@@ -237,11 +238,11 @@
         </div>
 
         <div class="t-item">
-          <strong>Nanjing Legend Pharmaceutical & Chemical Co., Ltd · IT Dept · SDE Intern</strong> <span class="muted"> (Feb 2023 – Apr 2023)</span>
+          <strong>Legend Biotech · Software Engineer Intern</strong> <span class="muted">(Feb 2023 – Apr 2023)</span>
+          <div class="muted">Java · JavaScript · Spring Boot · React · WeCom</div>
           <ul>
-            <li>Developed a cross-platform mobile attendance check-in application using Java and React, improving employee tracking efficiency.</li>
-            <li>Contributed to a tumor treatment tracking system using Spring Boot for managing patient data, treatment schedules, and progress tracking, and collaborating on frontend development using HTML5, CSS3, and JavaScript.</li>
-            <li>Created Power BI dashboards for departmental data visualization, enhancing decision-making processes.</li>
+            <li>Developed and launched an internal attendance system (Java/JavaScript) integrated with WeCom, used by 500+ employees, improving attendance tracking efficiency by 40%.</li>
+            <li>Engineered patient data management modules for a CAR-T treatment tracking system using Spring Boot and improved frontend user experience with React, enabling real-time treatment schedule updates and progress tracking for 200+ patients, in collaboration with clinical staff and full-stack engineers.</li>
           </ul>
         </div>
       </div>
@@ -253,31 +254,32 @@
       <div class="grid projects">
         <article class="card">
           <h3>Seattle Source Ranker</h3>
-          <p class="muted">Python · Celery/Redis · GraphQL/REST · Distributed Systems · React · GitHub Actions</p>
+          <p class="muted">Python · Celery · Redis · GraphQL · REST · React · GitHub Actions · Bash</p>
           <ul>
-            <li>Built a scalable distributed ingestion pipeline with Celery + Redis (16 concurrent workers) to collect and validate 432K+ repositories from 28K Seattle developers, achieving an 8.1× throughput improvement and 99.98% reliable ingestion under strict API rate limits.</li>
-            <li>Designed a three-phase hybrid API workflow (GraphQL → REST → GraphQL+HEAD) to correct GitHub’s inconsistent watchers data and remove ~2% invalid repos (deleted/private), ensuring high-precision metadata for all ranked projects.</li>
-            <li>Implemented a fault-tolerant token rotation system (6 rotating tokens × 5000 req/hr) with intelligent backoff and idempotent retries, reducing rate-limit failures by 92% and enabling 60–90 minute full dataset rebuilds.</li>
-            <li>Developed a multi-factor ranking engine using log-scaled popularity metrics (stars/forks/watchers), project age, issue health, and maintenance activity; supports 10 major languages and Python-specific PyPI tier bonuses (+15.5%).</li>
-            <li>Integrated PyPI’s 700K+ package index and global Top-15K rankings, identifying 1,075 Seattle PyPI packages and boosting visibility for 28 globally significant projects, using offline matching with 100% precision.</li>
-            <li>Automated daily dataset updates and static deployment via GitHub Actions, generating 9,632 optimized JSON datasets consumed by a React interface with real-time search, suggestions, lazy pagination, and <50ms load times.</li>
+            <li>Built a distributed ingestion system with Celery & Redis to collect and validate 400K+ repositories from 28K Seattle developers, achieving 8.1× throughput improvement and 99.98% ingestion reliability under rate limits.</li>
+            <li>Architected a fault-tolerant API orchestration layer combining GraphQL and REST fallback strategies to correct inconsistent watcher metrics, eliminating ~2% invalid repositories and ensuring ranking data integrity.</li>
+            <li>Implemented a rate-limit-aware token rotation system with adaptive backoff and idempotent retries, reducing rate-limit failures by 92% and enabling full dataset rebuilds within 60–90 minutes.</li>
+            <li>Automated daily dataset updates and static deployment via GitHub Actions (Bash scripts), generating 10K+ optimized JSON datasets consumed by a React interface with real-time search and sub-50ms page load times.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
-            <span class="chip">Sep 2025 – Present</span>
+          <div class="project-links">
+            <span class="chip">Sep 2025 – Dec 2025</span>
+            <a class="gh-link" href="https://github.com/Gin-87/Seattle-Source-Ranker" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
           </div>
         </article>
 
         <article class="card">
-          <h3>Virtual Character Letter Platform</h3>
-          <p class="muted">Java · Spring Boot · Redis · MongoDB · MySQL · RabbitMQ · AWS (EC2, CloudWatch) · Docker · Nginx</p>
+          <h3>Echoes — Virtual Character Letter Platform</h3>
+          <p class="muted">Java · Spring Boot · Python · FastAPI · Redis · MongoDB · MySQL · RabbitMQ · AWS (EC2, CloudWatch) · Docker · Nginx</p>
           <ul>
-            <li>Developed a hybrid backend using Spring Boot for user management and role creation, leveraging RESTful APIs or front-end and back-end communication and integrating LangChain for LLM model support.</li>
-            <li>Utilized Redis for caching to reduce latency and designed a multi-database architecture, using MongoDB for storing unstructured letter content and MySQL for managing structured user and role data.</li>
-            <li>Implemented RabbitMQ to handle asynchronous messaging between Java and Python services, ensuring efficient communication across the system.</li>
-            <li>Deployed the application to an Amazon EC2 instance, using Docker for containerization and Nginx for reverse proxy management. Configured AWS CloudWatch for monitoring and logging to ensure system stability.</li>
+            <li>Built a Python FastAPI service for LLM-powered letter generation with dynamic character-specific prompts, multi-language support and multi-turn context, integrating GPT and Doubao via OpenAI-compatible APIs.</li>
+            <li>Refactored LLM integration using the Strategy Pattern, enabling zero-change backend extension; added exponential backoff retry with 4xx short-circuit to eliminate redundant retries on auth failures.</li>
+            <li>Architected a two-layer async system to decouple Java-Python interactions: FastAPI BackgroundTasks for non-blocking HTTP responses, and RabbitMQ for persistent queued task delivery with automatic retry on failure.</li>
+            <li>Reduced latency and supported flexible data modeling by implementing Redis caching and a multi-database architecture, using MongoDB for unstructured letter content and MySQL for structured user and role data.</li>
+            <li>Ensured reliable deployment and operational stability by containerizing services with Docker, deploying to Amazon EC2, configuring Nginx as a reverse proxy, and setting up AWS CloudWatch for monitoring.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
-            <span class="chip">Nov 2024 – Present</span>
+          <div class="project-links">
+            <span class="chip">Nov 2024 – Apr 2025</span>
+            <a class="gh-link" href="https://github.com/Gin-87/Echoes" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
           </div>
         </article>
 
@@ -290,7 +292,7 @@
             <li>Integrated Redis to cache frequently accessed data, reducing database load and enhancing system performance.</li>
             <li>Automated order status updates with Spring Task to improve operational efficiency and enabled real-time notifications using WebSocket for better user experience.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <div class="project-links">
             <span class="chip">Sep 2024 – Nov 2024</span>
           </div>
         </article>
@@ -305,16 +307,15 @@
             <li>Enabled offline access to favorites with Room Database, using Coroutines to keep the UI responsive while persisting user selections.</li>
             <li>Integrated Google ExoPlayer for continuous music playback with reliable play/pause/seek controls.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <div class="project-links">
             <span class="chip">Sep 2024 – Nov 2024</span>
           </div>
         </article>
-
       </div>
     </section>
 
     <!-- AI & ML Projects -->
-    <section id="projects" style="margin-top:24px">
+    <section id="ml-projects" style="margin-top:24px">
       <h2>AI & ML Projects</h2>
       <div class="grid projects">
 
@@ -322,14 +323,14 @@
           <h3>Fair Diffusion: Mitigating Demographic Bias in Text-to-Image Models</h3>
           <p class="muted">Stable Diffusion v1.4 · LoRA Fine-Tuning · FairFace (ResNet-34) · KL Divergence · Prompt Engineering · Output Filtering</p>
           <ul>
-            <li>Built a 4-phase bias analysis pipeline for Stable Diffusion v1.4—baseline generation (Google Colab), demographic detection, prompt engineering, and output filtering—using stereotype-prone prompts (e.g., “CEO”, “nurse”, “engineer”, “flight attendant”, “criminal”). </li>
-            <li>Quantified gender/race distribution with the FairFace (ResNet-34) classifier and KL divergence against a uniform target; baseline showed imbalance (KL gender 0.1201, KL race 0.6375) with under-representation of several non-White groups. </li>
-            <li>Measured mitigation trade-offs: prompt engineering and output filtering alone worsened racial balance (KL race ↑ to 1.0986), while their combination balanced gender (KL 0.0201) but further skewed race (KL 1.2914), revealing multi-objective fairness conflicts.</li>
-            <li>Fine-tuned Stable Diffusion via DreamBooth + LoRA adapters on balanced demographic-role concept tokens (e.g., Black Female CEO, Black Female Criminal), achieving parameter-efficient bias correction with lower GPU memory use and faster training convergence.</li>
-            <li>Designed a hybrid evaluation framework combining quantitative metrics (FairFace, KL divergence) with qualitative review and LLM-assisted alignment scoring; outlined future work (LLM-driven prompt automation, fairness-aware RLHF, broader attribute coverage).</li>
+            <li>Built a 4-phase bias analysis pipeline for Stable Diffusion v1.4—baseline generation, demographic detection, prompt engineering, and output filtering—using stereotype-prone prompts (e.g., "CEO", "nurse", "engineer").</li>
+            <li>Quantified gender/race distribution with the FairFace (ResNet-34) classifier and KL divergence against a uniform target; baseline showed imbalance (KL gender 0.1201, KL race 0.6375) with under-representation of several non-White groups.</li>
+            <li>Fine-tuned Stable Diffusion via DreamBooth + LoRA adapters on balanced demographic-role concept tokens, achieving parameter-efficient bias correction with lower GPU memory use and faster training convergence.</li>
+            <li>Designed a hybrid evaluation framework combining quantitative metrics (FairFace, KL divergence) with qualitative review and LLM-assisted alignment scoring.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <div class="project-links">
             <span class="chip">Sep 2024 – Nov 2024</span>
+            <a class="gh-link" href="https://github.com/Gin-87/Fair-Diffusion" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
           </div>
         </article>
 
@@ -337,13 +338,14 @@
           <h3>Quantifying Fairness in Driver-Distraction Detection</h3>
           <p class="muted">VGG-16 · State Farm Distracted Driver Dataset · Grad-CAM · Fairness Analysis · Computer Vision</p>
           <ul>
-            <li>Fine-tuned VGG-16 on the State Farm Distracted Driver dataset (~22k images; 10 behavior classes), with reproducible training (fixed seeds, SGD, LR=1e-3, momentum=0.9). </li>
-            <li>Built an evaluation pipeline (train/val split, accuracy + confusion matrix) to expose behavior-level failure modes (e.g., normal driving vs. talking to passenger). </li>
-            <li>Conducted subgroup fairness analysis by sampling 100 White and 100 Non-White driver images and generating Grad-CAM heatmaps to inspect attention patterns. </li>
-            <li>Found potential attention bias: models focused on hands/mouth for White drivers but drifted to irrelevant regions for Non-White drivers—flagging a fairness risk for downstream use. </li>
+            <li>Fine-tuned VGG-16 on the State Farm Distracted Driver dataset (~22k images; 10 behavior classes), with reproducible training (fixed seeds, SGD, LR=1e-3, momentum=0.9).</li>
+            <li>Built an evaluation pipeline (train/val split, accuracy + confusion matrix) to expose behavior-level failure modes (e.g., normal driving vs. talking to passenger).</li>
+            <li>Conducted subgroup fairness analysis by sampling 100 White and 100 Non-White driver images and generating Grad-CAM heatmaps to inspect attention patterns.</li>
+            <li>Found potential attention bias: models focused on hands/mouth for White drivers but drifted to irrelevant regions for Non-White drivers—flagging a fairness risk for downstream use.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <div class="project-links">
             <span class="chip">Sep 2024 – Nov 2024</span>
+            <a class="gh-link" href="https://github.com/Gin-87/Bias-in-Distracted-Driving-Detection-Systems" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
           </div>
         </article>
 
@@ -351,12 +353,12 @@
           <h3>Predicting Yelp Ratings for Restaurants</h3>
           <p class="muted">Yelp Open Dataset · Feature Engineering · Ridge Regression · Random Forest · SVR · Model Card</p>
           <ul>
-            <li>Selected and profiled the Yelp Open Dataset (focused on restaurants), working from business.json and tip.json spanning 150,346 businesses and 6,990,280 user tips/reviews; defined the task as rating prediction and key-factor discovery. </li>
-            <li>Engineered a clean, analysis-ready table by flattening nested attributes, joining core business metadata, and validating duplicates/quality prior to modeling. </li>
-            <li>Identified actionable drivers (e.g., menu pricing and delivery services) with secondary contributors (NoiseLevel, HasTV, Ambience, OutdoorSeating) and deprioritized low-impact features (Attire, Reservations, GoodForKids). </li>
-            <li>Documented limitations (dataset size/quality, feature scope) and proposed external-signal fusion (events, weather, local economics) to boost predictive power; drafted a Model Card for transparency.</li>
+            <li>Selected and profiled the Yelp Open Dataset (focused on restaurants), spanning 150,346 businesses and 6,990,280 user tips/reviews; defined the task as rating prediction and key-factor discovery.</li>
+            <li>Engineered a clean, analysis-ready table by flattening nested attributes, joining core business metadata, and validating duplicates/quality prior to modeling.</li>
+            <li>Identified actionable drivers (e.g., menu pricing and delivery services) with secondary contributors (NoiseLevel, HasTV, Ambience, OutdoorSeating) and deprioritized low-impact features.</li>
+            <li>Documented limitations and proposed external-signal fusion (events, weather, local economics) to boost predictive power; drafted a Model Card for transparency.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <div class="project-links">
             <span class="chip">Sep 2024 – Nov 2024</span>
           </div>
         </article>
@@ -365,17 +367,17 @@
           <h3>Quantitative Trading of Stocks Using AI</h3>
           <p class="muted">Ridge Regression · Random Forest · Support Vector Regression (SVR) · Financial Data Analysis</p>
           <ul>
-            <li>Designed a quantitative trading strategy by integrating machine learning models (Ridge Regression, Random Forest, SVR) with a traditional multi-factor approach. Developed predictive models to forecast stock returns, constructed investment portfolios, and conducted back testing to validate strategy performance.</li>
-            <li>Utilized data from the CSI All Share Index (2020-2024) to analyze 31 financial factors, systematically screened them using Information Coefficient (IC) analysis and Random Forest algorithms.</li>
-            <li>Focused on the Support Vector Regression (SVR) model, achieving 16.41% excess returns, a profit-loss ratio of 5.36, and a 14.2% improvement in excess returns over the benchmark, demonstrating superior risk-adjusted performance and validating its robustness in portfolio optimization.</li>
+            <li>Designed a quantitative trading strategy by integrating machine learning models (Ridge Regression, Random Forest, SVR) with a traditional multi-factor approach to forecast stock returns and construct investment portfolios.</li>
+            <li>Utilized data from the CSI All Share Index (2020–2024) to analyze 31 financial factors, systematically screened using Information Coefficient (IC) analysis and Random Forest algorithms.</li>
+            <li>Achieved 16.41% excess returns, a profit-loss ratio of 5.36, and a 14.2% improvement in excess returns over the benchmark using SVR, demonstrating superior risk-adjusted performance in portfolio optimization.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <div class="project-links">
             <span class="chip">Nov 2024 – Present</span>
           </div>
         </article>
 
         <article class="card">
-          <h3>Application of Deep Learning in Sleep Physiological Signals</h3>
+          <h3>Deep Learning for Sleep Physiological Signal Classification</h3>
           <p class="muted">CNN · LSTM · Bi-LSTM · EEG/EOG Signal Processing · Deep Learning</p>
           <ul>
             <li>Built and trained deep learning models (CNN, LSTM, Bi-LSTM) for multi-modal EEG/EOG signals, enabling accurate sleep stage classification.</li>
@@ -383,7 +385,7 @@
             <li>Designed and evaluated classification pipeline, achieving 92% accuracy and demonstrating robustness across multiple subjects.</li>
             <li>Optimized training through multi-input architecture to better capture temporal and spatial dependencies in physiological data.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <div class="project-links">
             <span class="chip">Sep 2024 – Nov 2024</span>
           </div>
         </article>
@@ -395,33 +397,22 @@
     <section id="contact" style="margin-top:24px">
       <h2>Contact</h2>
       <div class="card">
-        <p>If my work aligns with what you’re building, I’d love to connect.</p>
+        <p>If my work aligns with what you're building, I'd love to connect.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn" href="mailto:wszhao87@gmail.com?subject=Interview%20Invitation&body=Hi%20Wenshu%2C%0D%0AWe%27d%20love%20to%20chat%20about...">✉️ <span>Email me</span></a>
-          <a class="btn secondary" href="tel:+16269976248" aria-label="Call">📞 Call</a>
-          <a class="btn secondary" href="vcard.vcf" download>👤 Save contact</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/wenshu-zhao" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">🔗 LinkedIn</a>
+          <a class="btn secondary" href="https://github.com/Gin-87" target="_blank" rel="noopener noreferrer" aria-label="GitHub">🐙 GitHub</a>
         </div>
-        <!-- Simple mailto fallback form. For real submissions, plug into Formspree/Netlify Forms -->
-        <form action="mailto:wszhao87@gmail.com" method="post" enctype="text/plain" style="margin-top:16px;display:grid;gap:10px;max-width:560px">
-          <label>Email
-            <input name="email" type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #334155;background:transparent;color:inherit">
-          </label>
-          <label>Message
-            <textarea name="message" rows="4" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #334155;background:transparent;color:inherit"></textarea>
-          </label>
-          <button class="btn" type="submit">Send</button>
-        </form>
       </div>
     </section>
 
   </main>
 
   <footer>
-    © <span id="year"></span> Wenshu Zhao · <code>v1.0.0</code> · <a href="#about">Back to top ↑</a>
+    © <span id="year"></span> Wenshu Zhao · <a href="https://gin-87.github.io/" target="_blank" rel="noopener">gin-87.github.io</a> · <a href="#about">Back to top ↑</a>
   </footer>
 
   <script>
-    // Year + theme toggle + safe external links
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('themeToggle').addEventListener('click', ()=>{
       const html = document.documentElement;
