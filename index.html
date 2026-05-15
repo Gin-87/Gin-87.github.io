@@ -443,6 +443,29 @@
     .contact-value { font-size: 14px; font-weight: 600; margin: 3px 0 0; color: var(--text); }
     .light .contact-value { color: var(--lb-text); }
 
+    /* ── Screenshot gallery ──────────────────────────── */
+    .screenshot-gallery {
+      display: flex; gap: 14px; overflow-x: auto; padding: 18px 2px 6px;
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      margin-top: 16px;
+    }
+    .screenshot-gallery::-webkit-scrollbar { height: 4px; }
+    .screenshot-gallery::-webkit-scrollbar-track { background: transparent; }
+    .screenshot-gallery::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
+    .light .screenshot-gallery::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    .ss-item { flex-shrink: 0; text-align: center; }
+    .ss-frame {
+      width: 148px; border-radius: 26px; overflow: hidden;
+      border: 1.5px solid rgba(255,255,255,.13);
+      box-shadow: 0 10px 30px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.05);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .ss-frame:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 40px rgba(0,0,0,.65), 0 0 0 1px rgba(14,165,233,.2); }
+    .light .ss-frame { border-color: rgba(0,0,0,.12); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .ss-frame img { display: block; width: 148px; height: auto; }
+    .ss-cap { font-size: 11px; color: var(--muted); margin-top: 8px; font-weight: 500; line-height: 1.3; }
+    .light .ss-cap { color: var(--lb-muted); }
+
     /* ── Tab padding ─────────────────────────────────── */
     .tab-panel:not(#panel-about) { padding: 36px 0 60px; }
 
@@ -572,19 +595,19 @@
           <h3>Recent Highlights</h3>
           <div class="highlight-item">
             <div class="highlight-icon hi-blue">🚀</div>
-            <p class="highlight-text"><strong>Voraa</strong> — Built Deal-Breaker Mode using Flutter & Firebase Cloud Functions with real-time multi-constraint venue matching.</p>
+            <p class="highlight-text"><strong>Voraa</strong> — Shipped Deal-Breaker Mode on GCP; Relax Suggestion Engine lifted venue visits/week 1.18→1.52 and cut never-ramped venues 59%→40%.</p>
           </div>
           <div class="highlight-item">
             <div class="highlight-icon hi-purple">🏗️</div>
-            <p class="highlight-text"><strong>IpserLab</strong> — Architected a schema-driven form engine in React Native & TypeScript supporting 6-step workflows with offline-first state.</p>
+            <p class="highlight-text"><strong>IpserLab</strong> — Schema-driven form engine in React Native & TypeScript + migrated file storage to AWS S3 with presigned URLs.</p>
           </div>
           <div class="highlight-item">
             <div class="highlight-icon hi-green">⚡</div>
-            <p class="highlight-text"><strong>Seattle Source Ranker</strong> — 8.1× throughput, 99.98% reliability via distributed Celery/Redis ingestion pipeline.</p>
+            <p class="highlight-text"><strong>Seattle Source Ranker</strong> — 8.1× throughput, 99.98% reliability; Prometheus + Grafana observability stack.</p>
           </div>
           <div class="highlight-item">
             <div class="highlight-icon hi-rose">🤖</div>
-            <p class="highlight-text"><strong>Echoes</strong> — Two-layer async system (FastAPI BackgroundTasks + RabbitMQ) for LLM-powered letter generation.</p>
+            <p class="highlight-text"><strong>AI Letter Platform</strong> — LangChain + ChromaDB RAG, SSE streaming, OpenTelemetry tracing, Kubernetes on AWS.</p>
           </div>
         </div>
 
@@ -601,7 +624,9 @@
           <div class="pill-group">
             <span class="pill">Java</span><span class="pill">Python</span>
             <span class="pill">JavaScript</span><span class="pill">TypeScript</span>
-            <span class="pill">SQL</span><span class="pill">C++</span><span class="pill">HTML/CSS</span>
+            <span class="pill">SQL</span><span class="pill">C++</span>
+            <span class="pill">Kotlin</span><span class="pill">Shell</span>
+            <span class="pill">HTML/CSS</span>
           </div>
         </div>
 
@@ -609,9 +634,10 @@
           <p class="skill-card-label">Frameworks & Tools</p>
           <div class="pill-group">
             <span class="pill">Spring Boot</span><span class="pill">React</span>
-            <span class="pill">FastAPI</span><span class="pill">Expo</span>
-            <span class="pill">Xcode</span><span class="pill">Hadoop</span>
-            <span class="pill">Apache Spark</span><span class="pill">Git</span>
+            <span class="pill">Vue.js</span><span class="pill">FastAPI</span>
+            <span class="pill">LangChain</span><span class="pill">LangGraph</span>
+            <span class="pill">Hadoop</span><span class="pill">Apache Spark</span>
+            <span class="pill">Maven</span><span class="pill">Expo</span>
           </div>
         </div>
 
@@ -620,9 +646,10 @@
           <div class="pill-group">
             <span class="pill">PostgreSQL</span><span class="pill">MySQL</span>
             <span class="pill">MongoDB</span><span class="pill">Redis</span>
-            <span class="pill">AWS</span><span class="pill">Azure</span>
-            <span class="pill">Docker</span><span class="pill">Nginx</span>
-            <span class="pill">CI/CD</span><span class="pill">Linux</span>
+            <span class="pill">AWS</span><span class="pill">GCP</span>
+            <span class="pill">Azure</span><span class="pill">Docker</span>
+            <span class="pill">Kubernetes</span><span class="pill">Kafka</span>
+            <span class="pill">Nginx</span><span class="pill">Linux</span>
           </div>
         </div>
 
@@ -632,18 +659,22 @@
             <span class="pill">Distributed Systems</span>
             <span class="pill">Microservices</span>
             <span class="pill">System Design</span>
-            <span class="pill">Data Structures</span>
+            <span class="pill">Data Structures & Algorithms</span>
+            <span class="pill">CI/CD</span>
+            <span class="pill">A/B Testing</span>
             <span class="pill">SDLC</span>
           </div>
         </div>
 
         <div class="card skill-card sk-ai">
-          <p class="skill-card-label">AI Tools</p>
+          <p class="skill-card-label">AI / ML</p>
           <div class="pill-group">
+            <span class="pill">PyTorch</span><span class="pill">TensorFlow</span>
+            <span class="pill">OpenAI API</span>
+            <span class="pill">Hugging Face</span>
+            <span class="pill">RAG</span><span class="pill">PEFT (LoRA)</span>
             <span class="pill">Claude</span><span class="pill">GitHub Copilot</span>
-            <span class="pill">Cursor</span><span class="pill">ChatGPT</span>
-            <span class="pill">Prompt Engineering</span>
-            <span class="pill">Agent Workflow Design</span>
+            <span class="pill">Cursor</span>
           </div>
         </div>
 
@@ -731,11 +762,33 @@
                 </div>
                 <span class="t-date">Sep 2025 – Present</span>
               </div>
-              <p class="t-stack">Flutter · Firebase Cloud Functions · Node.js · Firestore</p>
+              <p class="t-stack">Flutter · Firebase Cloud Functions (Node.js) · GCP (Pub/Sub · BigQuery) · Firestore · Jest</p>
               <ul>
-                <li>Designed and implemented Deal-Breaker Mode across Flutter and Firebase Cloud Functions using Node.js, executing a multi-constraint filtering pipeline against a dynamic GenTag taxonomy for real-time venue matching.</li>
-                <li>Solved Firestore's single <code>array-contains</code> limitation by implementing in-memory multi-tag AND/OR filtering with pagination and fallback relax suggestions on empty results.</li>
+                <li>Shipped Deal-Breaker Mode with Flutter and Firebase Cloud Functions (Node.js) on GCP, implementing multi-constraint filtering across 10 dimensions on 300+ venues; improved venue health score from 5.7 to 7.8.</li>
+                <li>Designed a 5-axis weighted Match Score model as a domain-only layer, with deterministic test injection and a filter → score → sort → paginate pipeline processing 200 venues under 2ms.</li>
+                <li>Built a Relax Suggestion Engine detecting thin-result queries and surfacing ranked constraint relaxations, increasing venue visits/week from 1.18 to 1.52 and reducing never-ramped venues from 59% to 40%.</li>
+                <li>Designed a user behavior analytics pipeline with GCP Pub/Sub and BigQuery capturing ~500 behavioral events/day; added per-user rate limiting with structured Cloud Logging for observability.</li>
+                <li>Integrated Claude Code into the development workflow for architecture decisions; enforced 100% Jest coverage on scoring module via Husky + lint-staged pre-commit automation, reducing iteration cycles by ~30%.</li>
               </ul>
+              <!-- Voraa screenshots gallery -->
+              <div class="screenshot-gallery">
+                <div class="ss-item">
+                  <div class="ss-frame"><img src="voraa-1-results.png" alt="Deal-Breaker results with Match Score" loading="lazy"></div>
+                  <p class="ss-cap">Results & Match Score</p>
+                </div>
+                <div class="ss-item">
+                  <div class="ss-frame"><img src="voraa-2-relax.png" alt="Relax Suggestion Engine" loading="lazy"></div>
+                  <p class="ss-cap">Relax Suggestion Engine</p>
+                </div>
+                <div class="ss-item">
+                  <div class="ss-frame"><img src="voraa-3-filters.png" alt="Operational filters panel" loading="lazy"></div>
+                  <p class="ss-cap">Operational Filters</p>
+                </div>
+                <div class="ss-item">
+                  <div class="ss-frame"><img src="voraa-4-lifestyle.png" alt="Lifestyle & Vibe filters" loading="lazy"></div>
+                  <p class="ss-cap">Lifestyle &amp; Vibe Filters</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -749,12 +802,10 @@
                 </div>
                 <span class="t-date">Jun 2025 – Dec 2025</span>
               </div>
-              <p class="t-stack">React Native · TypeScript · Jakarta EE · Java 21 · JDBC · PostgreSQL</p>
+              <p class="t-stack">React Native · TypeScript · Java 21 · PostgreSQL · AWS S3</p>
               <ul>
-                <li>Architected a schema-driven form engine in React Native & TypeScript supporting 6-step workflows with 28+ dynamic fields, decoupling UI from business logic via reusable components and custom hooks.</li>
-                <li>Engineered an offline-first application lifecycle system managing draft-to-completion submission state via AsyncStorage with per-user data namespacing, ensuring cross-account data isolation.</li>
-                <li>Designed a Command pattern API routing system in Jakarta EE, mapping endpoint handlers to URL paths as strategy interfaces to enable extensible routing without modifying core logic.</li>
-                <li>Implemented RESTful APIs in Java 21 / JDBC / PostgreSQL for multipart form submissions and binary file storage, integrating a React Native mobile client with backend services across a full-stack application.</li>
+                <li>Architected a schema-driven form engine in React Native and TypeScript with custom hooks and server-side JSON Schema validation, reducing new-field addition cost across 6-step workflows with 28+ dynamic fields.</li>
+                <li>Built RESTful backend services in Java 21 using a Command-pattern router and PostgreSQL-backed multipart ingestion; migrated storage from local disk to AWS S3 with presigned URLs, improving scalability and access control.</li>
               </ul>
             </div>
           </div>
@@ -786,10 +837,10 @@
                 </div>
                 <span class="t-date">Feb 2023 – Apr 2023</span>
               </div>
-              <p class="t-stack">Java · JavaScript · Spring Boot · React · WeCom</p>
+              <p class="t-stack">Java · Spring Boot · JavaScript · WeCom</p>
               <ul>
                 <li>Developed and launched an internal attendance system (Java/JavaScript) integrated with WeCom, used by 500+ employees, improving attendance tracking efficiency by 40%.</li>
-                <li>Engineered patient data management modules for a CAR-T treatment tracking system using Spring Boot and improved frontend user experience with React, enabling real-time treatment schedule updates and progress tracking for 200+ patients.</li>
+                <li>Engineered patient data management modules for a CAR-T treatment tracking system using Java (Spring Boot) and JavaScript, enabling real-time treatment schedule updates and progress tracking for 200+ patients.</li>
               </ul>
             </div>
           </div>
@@ -805,12 +856,13 @@
 
         <article class="card">
           <h3 class="card-title">Seattle Source Ranker</h3>
-          <p class="card-sub">Python · Celery · Redis · GraphQL · REST · React · GitHub Actions</p>
+          <p class="card-sub">Python · Celery · Redis · GraphQL · REST · React · Prometheus · Grafana · GitHub Actions</p>
           <ul>
-            <li>Built a distributed ingestion system with Celery & Redis to collect and validate 400K+ repositories from 28K Seattle developers, achieving 8.1× throughput improvement and 99.98% ingestion reliability under rate limits.</li>
-            <li>Architected a fault-tolerant API orchestration layer combining GraphQL and REST fallback strategies to correct inconsistent watcher metrics, eliminating ~2% invalid repositories.</li>
-            <li>Implemented a rate-limit-aware token rotation system with adaptive backoff and idempotent retries, reducing failures by 92% and enabling full dataset rebuilds within 60–90 minutes.</li>
-            <li>Automated daily dataset updates via GitHub Actions, generating 10K+ optimized JSON datasets consumed by a React interface with real-time search and sub-50ms page load times.</li>
+            <li>Built a distributed ingestion system with Celery & Redis to collect and validate 400K+ repositories from 28K Seattle developers, achieving 8.1× higher throughput and 99.98% reliability despite API rate limits.</li>
+            <li>Architected a fault-tolerant API layer combining GraphQL and REST fallback strategies to correct inconsistent watcher metrics, eliminating 8K invalid repositories and improving ranking data accuracy.</li>
+            <li>Implemented a rate-limit-aware token rotation system with adaptive backoff and idempotent retries, reducing rate-limit failures by 92% and enabling full dataset rebuilds within 60–90 minutes.</li>
+            <li>Deployed Prometheus + Grafana to monitor queue backlog and pipeline health, eliminating observability blind spots.</li>
+            <li>Automated daily updates and deployment via GitHub Actions, enabling real-time search and sub-50ms load times.</li>
           </ul>
           <div class="project-footer">
             <span class="chip">Sep 2025 – Dec 2025</span>
@@ -822,16 +874,16 @@
         </article>
 
         <article class="card">
-          <h3 class="card-title">Echoes — Virtual Character Letter Platform</h3>
-          <p class="card-sub">Java · Spring Boot · Python · FastAPI · Redis · MongoDB · MySQL · RabbitMQ · AWS · Docker</p>
+          <h3 class="card-title">AI Letter Generation Platform</h3>
+          <p class="card-sub">FastAPI · LangChain · ChromaDB · RAG · RabbitMQ · SSE · OpenTelemetry · Kubernetes · AWS · Docker · MongoDB · Nginx</p>
           <ul>
-            <li>Built a Python FastAPI service for LLM-powered letter generation with dynamic character-specific prompts, multi-language support and multi-turn context, integrating GPT and Doubao via OpenAI-compatible APIs.</li>
-            <li>Refactored LLM integration using the Strategy Pattern, enabling zero-change backend extension; added exponential backoff retry with 4xx short-circuit to eliminate redundant retries on auth failures.</li>
-            <li>Architected a two-layer async system: FastAPI BackgroundTasks for non-blocking HTTP responses, and RabbitMQ for persistent queued task delivery with automatic retry on failure.</li>
-            <li>Implemented Redis caching and a multi-database architecture (MongoDB for letters, MySQL for user data), deployed to EC2 with Docker, Nginx, and AWS CloudWatch.</li>
+            <li>Built a FastAPI service integrating GPT and Doubao for LLM-powered letter generation with role-based prompts, multilingual support, and multi-turn context; added a LangChain + ChromaDB RAG pipeline for grounded responses.</li>
+            <li>Implemented SSE-based streaming output and exposed an async task status API over RabbitMQ queues, eliminating client-side long-polling under high LLM latency.</li>
+            <li>Added per-user token tracking via Redis with configurable rate limits and instrumented the full Java → RabbitMQ → Python → LLM path with OpenTelemetry, exposing cross-service latency breakdowns.</li>
+            <li>Containerized Java + Python services with Docker and deployed to Kubernetes on AWS with HPA auto-scaling; used Nginx ingress, MongoDB for content storage, and CloudWatch alarms for proactive LLM failure alerting.</li>
           </ul>
           <div class="project-footer">
-            <span class="chip">Nov 2024 – Apr 2025</span>
+            <span class="chip">Jun 2025 – Sep 2025</span>
             <a class="gh-btn" href="https://github.com/Gin-87/Echoes" target="_blank" rel="noopener noreferrer">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
               GitHub
